@@ -1,32 +1,9 @@
 "use client"
 
-import { useLoginUserMutation } from '__generated__/graphql'
-import { useRouter } from 'next/navigation'
-import React from 'react'
-import { useForm } from "react-hook-form"
+import { useLogin } from './hooks/useLogin'
 
 const LoginForm = () => {
-  const [, login] = useLoginUserMutation()
-  const router = useRouter()
-
-
-
-  const { register, handleSubmit, formState: { isLoading } } = useForm()
-
-  const onSubmit = async (data: any) => {
-    console.log(data, "ddddddd")
-    const response = await login({ body: data })
-    console.log(response)
-
-
-    if (response.data) {
-      alert(response.data?.loginUser)
-      router.push("/")
-    }
-
-
-
-  }
+  const { handleSubmit, register, isLoading, onSubmit } = useLogin()
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>

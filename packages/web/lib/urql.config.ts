@@ -1,3 +1,4 @@
+"use client"
 
 import { Client, cacheExchange, fetchExchange } from 'urql';
 

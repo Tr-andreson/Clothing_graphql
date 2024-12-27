@@ -1,34 +1,10 @@
 "use client"
-import { useRegisterUserMutation } from '__generated__/graphql'
 import React from 'react'
-import { useForm } from 'react-hook-form'
+import { useRegister } from './hooks/useRegister'
 
 
-// const user = new User({
-//   email: body.email,
-//   password: hashedPassword,
-//   firstName: body.firstName,
-//   lastName: body.lastName,
-//   phoneNumber: body.phoneNumber
-// })
 const RegiserForm = () => {
-  const [, registerU] = useRegisterUserMutation()
-
-
-  const { register, handleSubmit, reset } = useForm()
-
-  const onSubmit = async (data: any) => {
-    console.log(data)
-    const response = await registerU({ body: data })
-
-    if (response.data) {
-      alert(response.data.registerUser)
-      reset()
-    }
-
-  }
-
-
+  const { handleSubmit, register, isLoading, onSubmit } = useRegister()
   return (
     <>
       <form onSubmit={handleSubmit(onSubmit)}>
@@ -37,7 +13,13 @@ const RegiserForm = () => {
         <input {...register("firstName")} placeholder='Enter First Name' />
         <input {...register("lastName")} placeholder='Enter Last Name' />
         <input {...register("phoneNumber")} placeholder='Enter phoneNumber' />
-        <button type='submit'>Submit</button>
+        {isLoading ? (
+          <div>
+            <h3>Loading .....</h3>
+          </div>
+        ) : (
+          <button type='submit'>Submit</button>
+        )}
       </form>
     </>
   )
