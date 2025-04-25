@@ -1,6 +1,6 @@
 import { User } from "../../db/modals/user.modal";
 import { Arg, Ctx, Field, InputType, Mutation, Query, Resolver } from "type-graphql";
-import bcrypt from "bcrypt"
+import bcrypt from "bcryptjs"
 import { Response, Request } from "express"
 // import jwt from "jsonwebtoken"
 import { HashPassword } from "../../services/bcrypt.service";

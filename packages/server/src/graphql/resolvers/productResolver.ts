@@ -2,8 +2,8 @@ import { Product } from "../../db/modals/product.modal";
 import { Arg, Field, InputType, Mutation, ObjectType, Query, Resolver, ID, Ctx } from "type-graphql"
 import slugger from "slug"
 import { GraphQLUpload, FileUpload } from "graphql-upload-ts";
-import path from "node:path"
-import { createWriteStream } from "node:fs"
+// import path from "node:path"
+// import { createWriteStream } from "node:fs"
 import { console } from "node:inspector";
 
 import i from "i18n"
@@ -206,7 +206,7 @@ export class ProductResolver {
         return "file not uploaded";
       }
 
-      const { createReadStream, filename } = file;
+      // const { createReadStream, filename } = file;
 
       // Log body to ensure it's being received
       console.log("Received body:", body);
@@ -218,14 +218,15 @@ export class ProductResolver {
         return "Missing body fields";
       }
 
-      await new Promise((resolve, reject) => {
-        createReadStream()
-          .pipe(createWriteStream(path.join(__dirname, "../../../images", filename)))
-          .on("finish", resolve)
-          .on("error", reject);
-      });
+      // await new Promise((resolve, reject) => {
+      //   createReadStream()
+      //     .pipe(createWriteStream(path.join(__dirname, "../../../images", filename)))
+      //     .on("finish", resolve)
+      //     .on("error", reject);
+      // });
 
-      const imageUrl = `http://localhost:9000/images/${filename}`;
+      // const imageUrl = `http://localhost:9000/images/${filename}`;
+      const imageUrl = ""
 
       const payload = {
         name,
