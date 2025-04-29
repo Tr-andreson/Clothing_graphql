@@ -1,3 +1,4 @@
+import session from "express-session";
 import RedisStore from "connect-redis"
 import { createClient } from "redis"
 
@@ -15,4 +16,25 @@ const redisStoreConfig = () => {
 
 }
 
-export default redisStoreConfig
+
+
+const redisStore = redisStoreConfig()
+export const redisConfig = (app: any) => {
+
+  app.use(
+    session({
+      store: redisStore,
+      name: "redisSession",
+      resave: false,
+      saveUninitialized: false,
+      secret: "keyboard cat",
+      cookie: {
+        maxAge: 1000 * 60 * 60 * 24, // 2 minutes
+        httpOnly: true,
+        sameSite: "lax",
+        secure: false
+      }
+    }),
+  )
+
+}

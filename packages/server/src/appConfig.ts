@@ -1,39 +1,21 @@
-import dotenv from "dotenv"
 import bodyParser from "body-parser";
 import compression from "compression";
 import cookieParser from "cookie-parser";
-import session from "express-session";
+import dotenv from "dotenv";
+import express from "express";
 import { graphqlUploadExpress } from "graphql-upload-ts";
 import path from "path";
 import { apolloConfig } from "./config/apollo.config";
 import { corsConfig } from "./config/cors.config";
 import { databaseConnection } from "./config/database.config";
-import redisStoreConfig from "./config/redisStore.config";
-import express from "express"
+import { redisConfig } from "./config/redisStore.config";
 
 
 dotenv.config()
 
 const app = express()
 
-const redisStore = redisStoreConfig()
 
-// redis session connection
-app.use(
-  session({
-    store: redisStore,
-    name: "redisSession",
-    resave: false,
-    saveUninitialized: false,
-    secret: "keyboard cat",
-    cookie: {
-      maxAge: 1000 * 60 * 60 * 24, // 2 minutes
-      httpOnly: true,
-      sameSite: "lax",
-      secure: false
-    }
-  }),
-)
 
 // graph ql updload
 app.use(graphqlUploadExpress({ maxFileSize: 10000000, maxFiles: 10 }));
@@ -48,6 +30,7 @@ app.use(cookieParser())
 // cors config
 corsConfig(app)
 
+redisConfig(app)
 // database connection
 databaseConnection()
 
