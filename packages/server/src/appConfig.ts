@@ -8,14 +8,11 @@ import path from "path";
 import { apolloConfig } from "./config/apollo.config";
 import { corsConfig } from "./config/cors.config";
 import { databaseConnection } from "./config/database.config";
-import { redisConfig } from "./config/redisStore.config";
 
 
 dotenv.config()
 
 const app = express()
-
-
 
 // graph ql updload
 app.use(graphqlUploadExpress({ maxFileSize: 10000000, maxFiles: 10 }));
@@ -30,7 +27,7 @@ app.use(cookieParser())
 // cors config
 corsConfig(app)
 
-redisConfig(app)
+// redisConfig(app)
 // database connection
 databaseConnection()
 

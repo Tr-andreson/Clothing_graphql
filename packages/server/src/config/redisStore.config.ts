@@ -16,11 +16,9 @@ const redisStoreConfig = () => {
 
 }
 
-
-
 const redisStore = redisStoreConfig()
-export const redisConfig = (app: any) => {
 
+export const redisConfig = (app: any) => {
   app.use(
     session({
       store: redisStore,

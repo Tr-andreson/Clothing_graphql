@@ -1,13 +1,12 @@
-import { User } from "../../db/modals/user.modal";
-import { Arg, Ctx, Field, InputType, Mutation, Query, Resolver } from "type-graphql";
+import { User } from "../../../db/modals/user.modal";
+import { Arg, Ctx, Mutation, Query, Resolver } from "type-graphql";
 import bcrypt from "bcryptjs"
 import { Response, Request } from "express"
-// import jwt from "jsonwebtoken"
-import { HashPassword } from "../../services/bcrypt.service";
-import { loginSchema } from "../../schema";
+import { HashPassword } from "../../../services/bcrypt.service";
+import { loginSchema } from "../../../schema";
 import { ZodError } from "zod";
 import crypto from "node:crypto"
-// import { generateTokenAndGetCookie } from "../../services/generateToken.service";
+import { AuthInputT, AuthLoginT, AuthForgotT } from "./dto/auth.dto";
 
 declare module "express-session" {
   interface Session {
@@ -16,45 +15,10 @@ declare module "express-session" {
 }
 
 
-@InputType()
-class AuthInputT {
-  @Field()
-  email: string;
-
-  @Field()
-  phoneNumber: string;
-
-  @Field()
-  firstName: string;
-
-  @Field()
-  lastName: string;
-
-  @Field()
-  password: string;
-}
-
-@InputType()
-class AuthLoginT {
-  @Field()
-  email: string;
-
-  @Field()
-  password: string;
-}
-
-@InputType()
-class AuthForgotT {
-
-  @Field()
-  email: string;
-
-}
 
 
 @Resolver()
 export class AuthResolver {
-
   @Query(() => String)
   public async check() {
     try {
@@ -69,8 +33,6 @@ export class AuthResolver {
   @Mutation(() => String)
   public async registerUser(
     @Arg("body") body: AuthInputT,
-    // @Ctx("res") res: Response,
-    // @Ctx("req") req: Request
   ) {
     try {
       const hashedPassword = await HashPassword(body.password)
@@ -84,13 +46,6 @@ export class AuthResolver {
       })
 
       const savedUser = await user.save()
-
-      // const token = jwt.sign(body.password, "secret")
-      //
-      // res.cookie("NEcomCheck", token)
-      // @ts-ignore
-      // req.session._id = user.id
-
 
       if (!savedUser) {
         return "Error in try"
@@ -120,31 +75,28 @@ export class AuthResolver {
       const existingUser = await User.findOne({ email });
 
       if (!existingUser || !existingUser.password) {
-        return "User does not exist or password is not set"; // Handle the case where the user or password is missing
+        return "User does not exist or password is not set";
       }
       const passwordCheck = await bcrypt.compare(password, existingUser.password);
 
       if (!passwordCheck) {
-        res.status(401);  // Set status code but don't send a response yet
-        return "Password is incorrect";  // Return the message directly
+        res.status(401);
+        return "Password is incorrect";
       }
 
-      // // Set the session user ID
-      // req.session!.userId = existingUser.id;
 
 
       req.session!.userId = existingUser.id
 
-      // req.session!.userId = existingUser.id
 
-      res.status(200);  // Set status code
-      return "Login Successful";  // Return the success message
+      res.status(200);
+      return "Login Successful";
     } catch (error) {
       if (error instanceof ZodError) {
-        res.status(400);  // Set status code for validation errors
+        res.status(400);
         return JSON.stringify({ error: error.errors });
       }
-      res.status(500);  // Set status code for other errors
+      res.status(500);
       console.log(error)
       return "Error Occurred";
     }
@@ -167,25 +119,16 @@ export class AuthResolver {
 
       const buffer = crypto.randomBytes(48);
       const resetToken = buffer.toString('hex');
-
-
       isEmailExist.resetPasswordToken = resetToken;
       isEmailExist.resetPasswordExpires = new Date(Date.now() + 3600000);
-
       isEmailExist.save();
-
-
       return `Reset password is ${resetToken}`
-
-
-
     } catch (error) {
-
       if (error instanceof ZodError) {
-        res.status(400);  // Set status code for validation errors
+        res.status(400);
         return JSON.stringify({ error: error.errors });
       }
-      res.status(500);  // Set status code for other errors
+      res.status(500);
       return "Error Occurred";
     }
 

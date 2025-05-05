@@ -1,53 +1,10 @@
+import { Brand } from "../../../db/modals/brand.model";
+import { Arg, Mutation, Query, Resolver } from "type-graphql"
+import { BrandT } from "./entities/brand.entity";
+import { BrandInputT } from "./dto/brand.dto";
 
-import { Brand } from "../../db/modals/brand.model";
-import { Arg, Field, InputType, Mutation, ObjectType, Query, Resolver } from "type-graphql"
 
 
-// type 
-@InputType()
-class BrandInputT {
-  @Field()
-  name: string;
-
-  @Field()
-  slug: string;
-
-  @Field()
-  imageUrl: string;
-
-  @Field()
-  description: string;
-
-  @Field()
-  isActive: boolean;
-  //
-  // @Field()
-  // merchant: string;
-}
-
-@ObjectType()
-class BrandT {
-  @Field()
-  id: string;
-
-  @Field()
-  name: string;
-  @Field()
-  slug: string;
-
-  @Field()
-  imageUrl: string;
-
-  @Field()
-  description: string;
-
-  @Field()
-  isActive: boolean;
-
-  @Field()
-  merchant: string;
-
-}
 
 @Resolver()
 export class BrandResolver {

@@ -1,79 +1,18 @@
-
-
-import { Transporter } from "../../services/nodemailer";
-import { MERCHANT_STATUS } from "../../utils/constants";
-import { Merchant } from "../../db/modals/merchant.model";
-import { Arg, Field, InputType, Mutation, ObjectType, Query, Resolver } from "type-graphql"
+import { Transporter } from "../../../services/nodemailer";
+import { MERCHANT_STATUS } from "../../../utils/constants";
+import { Merchant } from "../../../db/modals/merchant.model";
+import { Arg, Mutation, Query, Resolver } from "type-graphql"
 import { registerEnumType } from "type-graphql";
-
-
-
+import { MerchantInputT } from "./dto/merchand.dto";
+import { MerchantT } from "./entities/merchant.entities";
 
 
 registerEnumType(MERCHANT_STATUS, {
-  name: "MerchantStatus", // This is the name that will appear in the GraphQL schema
-  description: "The status of the merchant", // Optional description
+  name: "MerchantStatus",
+  description: "The status of the merchant",
 });
 
-// type 
-@InputType()
-class MerchantInputT {
-  @Field()
-  name: string;
 
-  @Field()
-  email: string;
-
-  @Field()
-  phoneNumber: string;
-
-  @Field()
-  brandName: string;
-
-  @Field()
-  business: string;
-
-  @Field()
-  isActive: boolean;
-
-  // @Field()
-  // brand: string;
-
-  // @Field(() => MerchantStatus)  // Apply the enum here
-  // status: MerchantStatus;
-
-
-}
-
-@ObjectType()
-class MerchantT {
-  @Field()
-  id: string;
-
-  @Field()
-  name: string;
-
-  @Field()
-  email: string;
-
-  @Field()
-  phoneNumber: string;
-
-  @Field()
-  brandName: string;
-
-  @Field()
-  business: string;
-
-  @Field()
-  brand: string;
-
-  @Field()
-  status: string;
-
-  @Field()
-  isActive: boolean;
-}
 
 @Resolver()
 export class MerchantResolver {

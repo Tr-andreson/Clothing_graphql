@@ -1,105 +1,13 @@
-import { Product } from "../../db/modals/product.modal";
-import { Arg, Field, InputType, Mutation, ObjectType, Query, Resolver, ID, Ctx } from "type-graphql"
+import { Product } from "../../../db/modals/product.modal";
+import { Arg, Mutation, Query, Resolver, Ctx } from "type-graphql"
 import slugger from "slug"
 import { GraphQLUpload, FileUpload } from "graphql-upload-ts";
-// import path from "node:path"
-// import { createWriteStream } from "node:fs"
 import { console } from "node:inspector";
-
 import i from "i18n"
 import { Request } from "express";
+import { ProductInputT, UploadFileT } from "./dto/product.dto";
+import { ProductT } from "./entities/product.entities";
 
-
-// type 
-@InputType()
-class ProductInputT {
-  @Field()
-  sku: string;
-
-  @Field()
-  name: string;
-
-  @Field()
-  imageUrl: string;
-
-  @Field()
-  imageKey: string;
-
-  @Field()
-  brand: string;
-
-  @Field()
-  description: string;
-
-  @Field()
-  quantity: number;
-
-  @Field()
-  price: number;
-
-  @Field()
-  taxable: boolean;
-
-  @Field()
-  isActive: boolean;
-}
-
-
-@InputType()
-class UploadFileT {
-  @Field()
-  name: string
-
-  @Field()
-  email: string
-
-  @Field()
-  password: string
-
-  // @Field()
-  // imageLink: string
-}
-
-@ObjectType()
-class ProductT {
-  @Field(() => ID)
-  id: string;
-
-  @Field()
-  sku: string;
-
-
-  @Field()
-  name: string;
-
-
-  @Field()
-  slug: string;
-
-  @Field()
-  imageUrl: string;
-
-  @Field()
-  imageKey: string;
-
-  @Field()
-  brand: string;
-
-  @Field()
-  description: string;
-
-  @Field()
-  quantity: number;
-
-  @Field()
-  price: number;
-
-  @Field()
-  taxable: boolean;
-
-  @Field()
-  isActive: boolean;
-}
 
 // const files = [];
 
