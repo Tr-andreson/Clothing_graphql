@@ -9,7 +9,6 @@ import { ProductInputT, UploadFileT } from "./dto/product.dto";
 import { ProductT } from "./entities/product.entities";
 
 
-// const files = [];
 
 @Resolver()
 export class ProductResolver {
@@ -192,8 +191,5 @@ export class ProductResolver {
   //     return "not working";
   //   }
   // }
-
-
-
 }
 

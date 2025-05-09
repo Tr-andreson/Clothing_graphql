@@ -3,9 +3,9 @@ import { check, sleep } from 'k6';
 
 export const options = {
   stages: [
-    { duration: '1m', target: 10 },  // normal load
-    { duration: '10s', target: 500 }, // sudden spike
-    { duration: '3m', target: 10 },  // return to normal
+    { duration: '20s', target: 10 },  // normal load
+    { duration: '10s', target: 8000 }, // sudden spike
+    { duration: '20s', target: 10 },  // return to normal
   ],
 };
 
