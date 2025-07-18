@@ -1,0 +1,133 @@
+-- USERS
+CREATE TABLE Users (
+  id SERIAL PRIMARY KEY,
+  name VARCHAR(100),
+  email VARCHAR(100) UNIQUE NOT NULL,
+  password_hash TEXT NOT NULL,
+  role VARCHAR(20) DEFAULT 'USER', -- 'USER' | 'ADMIN'
+  created_at TIMESTAMP DEFAULT NOW(),
+  updated_at TIMESTAMP DEFAULT NOW()
+);
+
+-- ADDRESSES
+CREATE TABLE Addresses (
+  id SERIAL PRIMARY KEY,
+  user_id INTEGER REFERENCES Users(id) ON DELETE CASCADE,
+  line1 VARCHAR(255),
+  line2 VARCHAR(255),
+  city VARCHAR(100),
+  state VARCHAR(100),
+  postal_code VARCHAR(20),
+  country VARCHAR(100),
+  is_default BOOLEAN DEFAULT FALSE,
+  created_at TIMESTAMP DEFAULT NOW()
+);
+
+-- CATEGORIES
+CREATE TABLE Categories (
+  id SERIAL PRIMARY KEY,
+  name VARCHAR(100) UNIQUE NOT NULL,
+  slug VARCHAR(100) UNIQUE,
+  description TEXT,
+  image_url TEXT,
+  created_at TIMESTAMP DEFAULT NOW()
+);
+
+-- BRANDS
+CREATE TABLE Brands (
+  id SERIAL PRIMARY KEY,
+  name VARCHAR(100) UNIQUE NOT NULL,
+  image_url TEXT,
+  created_at TIMESTAMP DEFAULT NOW()
+);
+
+-- PRODUCTS
+CREATE TABLE Products (
+  id SERIAL PRIMARY KEY,
+  name VARCHAR(255) NOT NULL,
+  slug VARCHAR(255) UNIQUE,
+  sku VARCHAR(100) UNIQUE,
+  description TEXT,
+  price DECIMAL(10,2),
+  stock_quantity INTEGER DEFAULT 0,
+  taxable BOOLEAN DEFAULT TRUE,
+  is_active BOOLEAN DEFAULT TRUE,
+  category_id INTEGER REFERENCES Categories(id),
+  brand_id INTEGER REFERENCES Brands(id),
+  image_url TEXT,
+  created_at TIMESTAMP DEFAULT NOW()
+);
+
+-- WISHLISTS
+CREATE TABLE Wishlists (
+  id SERIAL PRIMARY KEY,
+  user_id INTEGER REFERENCES Users(id),
+  product_id INTEGER REFERENCES Products(id),
+  is_liked BOOLEAN DEFAULT TRUE,
+  created_at TIMESTAMP DEFAULT NOW()
+);
+
+-- CARTS
+CREATE TABLE Carts (
+  id SERIAL PRIMARY KEY,
+  user_id INTEGER REFERENCES Users(id),
+  created_at TIMESTAMP DEFAULT NOW()
+);
+
+-- CART ITEMS
+CREATE TABLE CartItems (
+  id SERIAL PRIMARY KEY,
+  cart_id INTEGER REFERENCES Carts(id) ON DELETE CASCADE,
+  product_id INTEGER REFERENCES Products(id),
+  quantity INTEGER DEFAULT 1
+);
+
+-- ORDERS
+CREATE TABLE Orders (
+  id SERIAL PRIMARY KEY,
+  user_id INTEGER REFERENCES Users(id),
+  status VARCHAR(50) DEFAULT 'PENDING', -- 'PENDING', 'PAID', 'SHIPPED', etc.
+  total DECIMAL(10,2),
+  shipping_address_id INTEGER REFERENCES Addresses(id),
+  created_at TIMESTAMP DEFAULT NOW()
+);
+
+-- ORDER ITEMS
+CREATE TABLE OrderItems (
+  id SERIAL PRIMARY KEY,
+  order_id INTEGER REFERENCES Orders(id) ON DELETE CASCADE,
+  product_id INTEGER REFERENCES Products(id),
+  quantity INTEGER,
+  price DECIMAL(10,2)
+);
+
+-- REVIEWS
+CREATE TABLE Reviews (
+  id SERIAL PRIMARY KEY,
+  user_id INTEGER REFERENCES Users(id),
+  product_id INTEGER REFERENCES Products(id),
+  title VARCHAR(255),
+  rating INTEGER CHECK (rating BETWEEN 1 AND 5),
+  review TEXT,
+  is_recommended BOOLEAN DEFAULT TRUE,
+  status VARCHAR(50) DEFAULT 'PENDING', -- or 'APPROVED'
+  created_at TIMESTAMP DEFAULT NOW()
+);
+
+-- COUPONS
+CREATE TABLE Coupons (
+  id SERIAL PRIMARY KEY,
+  code VARCHAR(50) UNIQUE NOT NULL,
+  discount_percent INTEGER CHECK (discount_percent BETWEEN 1 AND 100),
+  expires_at TIMESTAMP,
+  created_at TIMESTAMP DEFAULT NOW()
+);
+
+-- EMAIL LOGS
+CREATE TABLE EmailLogs (
+  id SERIAL PRIMARY KEY,
+  user_id INTEGER REFERENCES Users(id),
+  subject VARCHAR(255),
+  content TEXT,
+  sent_at TIMESTAMP DEFAULT NOW()
+);
