@@ -1,3 +1,6 @@
+To use it
+.localenv -> .env
+Fill the Ports
 
 That's great progress on your eCommerce website! Since you've completed essential features like login, registration, product display, and add-to-cart functionality, here are the next key modules you can focus on to continue building the platform:
 
