@@ -7,8 +7,8 @@ dotenv.config()
 
 const main = () => {
   const server = http.createServer(app)
-  server.listen(process.env.PORT, () => {
-    console.log(`server listing to port ${process.env.PORT}`)
+  server.listen(process.env.PORT || 8000, () => {
+    console.log(`server listing to port ${process.env.PORT || 8000}`)
   })
 }
 
