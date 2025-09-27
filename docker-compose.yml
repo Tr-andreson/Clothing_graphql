@@ -1,10 +1,21 @@
 services:
+  mongo:
+    image: mongo
+    ports:
+      - "27017:27017"
+
+  redis:
+    image: redis:alpine
+    ports:
+      - "6379:6379"
   server:
     build: "./packages/server/."
     expose:
       - "8000"
     mem_limit: 400m
     cpu_percent: 70
+    environment:
+      - DATABASE_URL=mongodb://mongo:27017/mydatabase
 
   web:
     build: "./packages/web2/."
@@ -13,6 +24,7 @@ services:
     depends_on:
       - "server"
     mem_limit: 400m
+
   nginx:
     image: nginx:alpine
     cpu_percent: 70
