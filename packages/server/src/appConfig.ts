@@ -8,6 +8,7 @@ import path from "path";
 import { apolloConfig } from "./config/apollo.config";
 import { corsConfig } from "./config/cors.config";
 import { databaseConnection } from "./config/database.config";
+// import { databaseConnection } from "./config/database.config";
 
 
 dotenv.config()

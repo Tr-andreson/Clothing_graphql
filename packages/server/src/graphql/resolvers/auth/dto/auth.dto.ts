@@ -1,12 +1,10 @@
-import { InputType, Field } from "type-graphql";
+import { InputType, Field, Query, ObjectType } from "type-graphql";
 
 @InputType()
 export class AuthInputT {
-  @Field()
-  email: string;
 
   @Field()
-  phoneNumber: string;
+  email: string;
 
   @Field()
   firstName: string;
@@ -15,22 +13,57 @@ export class AuthInputT {
   lastName: string;
 
   @Field()
+  phoneNumber: string;
+
+
+  @Field()
   password: string;
+
+  // @Field()
+  // merchant: string;
+
+  @Field()
+  provider: string;
+
+  // @Field()
+  // role: string;
+
+
 }
 
-@InputType()
-export class AuthLoginT {
+
+@ObjectType()
+export class AuthResponseT {
+  @Field()
+  id: string
+
   @Field()
   email: string;
 
   @Field()
-  password: string;
-}
-
-@InputType()
-export class AuthForgotT {
+  firstName: string;
 
   @Field()
-  email: string;
+  lastName: string;
+
+  @Field()
+  phoneNumber: string;
+
+
+  @Field()
+  password: string;
+
+  @Field()
+  merchant: string;
+
+  @Field()
+  provider: string;
+
+  @Field()
+  role: string;
+
+  @Field()
+  created?: Date;
 
 }
+

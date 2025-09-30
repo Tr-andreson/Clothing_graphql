@@ -3,7 +3,7 @@ import { Arg, Mutation, Query, Resolver, Ctx } from "type-graphql"
 import slugger from "slug"
 import { GraphQLUpload, FileUpload } from "graphql-upload-ts";
 import { console } from "node:inspector";
-import i from "i18n"
+// import i from "i18n"
 import { Request } from "express";
 import { ProductInputT, UploadFileT } from "./dto/product.dto";
 import { ProductT } from "./entities/product.entities";
@@ -19,13 +19,13 @@ export class ProductResolver {
   // @UseMiddleware(VerifyToken)
   public async getProduct(
     @Arg("limit") limit: number,
-    @Ctx("request") request: Request
+    @Ctx("request") _request: Request
   ): Promise<ProductT[] | any> {
 
     try {
-      const location = i.getLocale(request)
-      console.log(location, "llll")
-      console.log("working")
+      // const location = i.getLocale(request)
+      // console.log(location, "llll")
+      // console.log("working")
 
       const product = await Product.find().limit(limit)
 

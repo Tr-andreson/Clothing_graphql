@@ -1,16 +1,12 @@
 
 import { ApolloServer } from "apollo-server-express"
-import { ProductResolver } from "../graphql/resolvers/product/productResolver"
 import { buildSchema } from "type-graphql"
 import { AuthResolver } from "../graphql/resolvers/auth/authResolver"
-import { UserResolver } from "../graphql/resolvers/user/userResolver"
 
 export const apolloConfig = async (app: any) => {
-
-
   const apolloServer = new ApolloServer({
     schema: await buildSchema({
-      resolvers: [ProductResolver, AuthResolver, UserResolver],
+      resolvers: [AuthResolver],
       validate: false
     }),
     context: ({ req, res }) => ({ req, res }),

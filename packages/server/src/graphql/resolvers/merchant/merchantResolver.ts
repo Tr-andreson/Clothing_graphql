@@ -1,4 +1,4 @@
-import { Transporter } from "../../../services/nodemailer";
+import { Transporter } from "../../../infrastructure/services/nodemailer";
 import { MERCHANT_STATUS } from "../../../utils/constants";
 import { Merchant } from "../../../db/modals/merchant.model";
 import { Arg, Mutation, Query, Resolver } from "type-graphql"
