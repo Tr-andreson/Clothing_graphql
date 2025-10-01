@@ -2,26 +2,36 @@
 import http from 'k6/http';
 import { check, sleep } from 'k6';
 
+// export const options = {
+//   vus: 1,
+//   duration: '10s',
+// };
+
 export const options = {
-  vus: 1,
-  duration: '10s',
+  vus: 500,
+  duration: '30s',
 };
 
-const url = 'http://localhost:9000/graphql';
+const url = 'http://localhost:8080/graphql';
 
-export default function() {
+export default function () {
   const query = `
-    query GetUsers {
-      getUsers {
-        _id
+
+query Users {
+    Users {
+        id
         email
-        phoneNumber
         firstName
         lastName
+        phoneNumber
+        password
+        provider
         role
         created
-      }
     }
+}
+
+
   `;
 
   const payload = JSON.stringify({

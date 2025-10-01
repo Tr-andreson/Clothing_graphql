@@ -1,5 +1,5 @@
-import { IMailInterface } from "./interface";
 import nodemailer from "nodemailer"
+import { IMailInterface } from "../../../domain/services/IMailService"
 
 export class NodemailerService implements IMailInterface {
   async send() {

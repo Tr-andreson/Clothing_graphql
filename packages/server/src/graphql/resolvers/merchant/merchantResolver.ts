@@ -1,4 +1,4 @@
-import { Transporter } from "../../../infrastructure/services/nodemailer";
+// import { Transporter } from "../../../infrastructure/services/nodemailer";
 import { MERCHANT_STATUS } from "../../../utils/constants";
 import { Merchant } from "../../../db/modals/merchant.model";
 import { Arg, Mutation, Query, Resolver } from "type-graphql"
@@ -58,8 +58,8 @@ export class MerchantResolver {
         // html: html, // HTML body (optional)
       };
 
-      let info = await Transporter.sendMail(mailOptions);
-      console.log('Message sent: %s', info.messageId);
+      // let info = await Transporter.sendMail(mailOptions);
+      // console.log('Message sent: %s', info.messageId);
       return "merchant value"
 
     } catch (error) {

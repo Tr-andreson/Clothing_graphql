@@ -1,5 +1,7 @@
 
 import { model, Schema } from "mongoose";
+import { User } from "src/domain/entities/User";
+import { IUserRepository } from "src/domain/repositories/IUserRepository";
 
 const EMAIL_PROVIDER = {
   Email: 'Email',
@@ -66,31 +68,19 @@ const UserSchema = new Schema({
 const UserModel = model("User", UserSchema)
 
 
-interface IUserService {
-  findAll(): Promise<any>
-  findByEmail(email: string): Promise<any>
-  register(body: any): Promise<any>
-  // login(email: string, password: string): Promise<any>
-  // forgot(body: any): Promise<any>
-  // logout(): Promise<any>
 
-}
-
-export class UserService implements IUserService {
+export class UserRepository implements IUserRepository {
+  async save(user: User): Promise<User> {
+    const userr = await UserModel.create(user)
+    await userr.save()
+    return user
+  }
   async findAll(): Promise<any> {
     return await UserModel.find({})
   }
   async findByEmail(email: string): Promise<any> {
     return await UserModel.findOne({ email: email })
   }
-  async register(body: any): Promise<any> {
-    const user = await UserModel.create(body)
-    await user.save()
-    return user
-  }
-  // logout(): Promise<any> {
-  //   throw new Error("Method not implemented.");
-  // }
 
 
 }

@@ -1,7 +1,7 @@
 import bcrypt from "bcryptjs";
-import { IHasingService } from "./interface";
+import { IHashService } from "../../../domain/services/IHashService";
 
-export class BcryptService implements IHasingService {
+export class BcryptService implements IHashService {
   hash(plain: string): Promise<string> {
     let salt = 10
     return bcrypt.hash(plain, salt)

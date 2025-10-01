@@ -29,7 +29,7 @@ RUN npm install --omit=dev && npm cache clean --force
 COPY --from=builder /app/dist ./dist
 
 # Copy any runtime config (if needed, e.g., prisma schema, migrations)
-COPY --from=builder /app/prisma ./prisma
+# COPY --from=builder /app/prisma ./prisma
 
 # Start the app
 CMD ["npm", "run", "start"]

@@ -1,4 +1,4 @@
-import { ITokenService } from "./interface";
+import { ITokenService } from "../../../domain/services/ITokenService"
 import jwt from "jsonwebtoken"
 
 export class JwtService implements ITokenService {

@@ -1,60 +1,39 @@
+// presentation/graphql/resolvers/AuthResolver.ts
 import { Arg, Mutation, Query, Resolver } from "type-graphql";
-import { AuthInputT, AuthResponseT } from "./dto/auth.dto";
-import { UserService } from "../../../infrastructure/db/userModel";
+import { RegisterInputT, LoginInputT, RegisterResponseT } from "./dto/auth.dto";
+import { RegisterUserUseCase } from "../../../application/usecases/RegisterUserUseCase";
+import { LoginUserUseCase } from "../../../application/usecases/LoginUserUseCase";
 import { BcryptService } from "../../../infrastructure/services/hashingService/bcrypt.service";
-
-// // import { BcryptService } from "../../../infrastructure/services/hashingService/bcrypt.service";
-// import { AuthInputT } from "./dto/auth.dto";
-
-
-
-
-const hashService = new BcryptService()
-const userService = new UserService()
+import { UserRepository } from "../../../infrastructure/db/userModel";
 
 @Resolver()
 export class AuthResolver {
-  @Query(() => [AuthResponseT])
-  public async Users(): Promise<[AuthResponseT] | any> {
-    try {
-      const user = await userService.findAll()
-      console.log(user, "user debug");
-      return user
-    } catch (err) {
-      return "err"
-    }
+  private readonly registerUser: RegisterUserUseCase;
+  private readonly loginUser: LoginUserUseCase;
+  private readonly userRepo: UserRepository;
+
+  constructor() {
+    const userRepo = new UserRepository();
+    const hashService = new BcryptService();
+    this.userRepo = userRepo;
+
+    this.registerUser = new RegisterUserUseCase(userRepo, hashService);
+    this.loginUser = new LoginUserUseCase(userRepo, hashService);
   }
 
-
+  @Query(() => [RegisterResponseT])
+  async Users() {
+    return this.userRepo.findAll();
+  }
 
   @Mutation(() => String)
-  public async registerUser(
-    @Arg("body") body: AuthInputT,
-  ) {
-    try {
-      const hashedPassword = await hashService.hash(body.password)
-      let payload = {
-        email: body.email,
-        firstName: body.firstName,
-        lastName: body.lastName,
-        password: hashedPassword,
-        phoneNumber: body.phoneNumber,
-        // merchant: body.merchant,
-        provider: body.provider,
-        // role: body.role,
+  async registerUserMutation(@Arg("body") body: RegisterInputT) {
+    await this.registerUser.execute(body);
+    return "User registered successfully";
+  }
 
-      }
-      console.log(payload)
-      await userService.register(payload)
-      return "User registerd"
-    } catch (err) {
-      console.log(err, "err debug");
-      return "error occured"
-    }
+  @Mutation(() => String)
+  async loginUserMutation(@Arg("body") body: LoginInputT) {
+    return await this.loginUser.execute(body);
   }
 }
-
-
-
-
-

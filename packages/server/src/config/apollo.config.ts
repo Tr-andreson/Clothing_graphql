@@ -10,6 +10,16 @@ export const apolloConfig = async (app: any) => {
       validate: false
     }),
     context: ({ req, res }) => ({ req, res }),
+    formatError: (err) => {
+      // Map known errors to codes
+      if (err.message.includes("Unauthorized")) {
+        err.extensions.code = "UNAUTHENTICATED";
+        (err.extensions as any).http = { status: 401 };
+      } else {
+        (err.extensions as any).http = { status: 500 };
+      }
+      return err;
+    },
   })
 
   await apolloServer.start()
