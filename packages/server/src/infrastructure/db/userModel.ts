@@ -1,7 +1,8 @@
 
 import { model, Schema } from "mongoose";
-import { User } from "src/domain/entities/User";
-import { IUserRepository } from "src/domain/repositories/IUserRepository";
+import { User } from "../../domain/entities/User";
+import { IUserRepository } from "../../domain/repositories/IUserRepository";
+
 
 const EMAIL_PROVIDER = {
   Email: 'Email',
@@ -31,11 +32,6 @@ const UserSchema = new Schema({
   password: {
     type: String
   },
-  // merchant: {
-  //   type: Schema.Types.ObjectId,
-  //   ref: 'Merchant',
-  //   default: null,
-  // },
   provider: {
     type: String,
     required: true,
@@ -66,7 +62,6 @@ const UserSchema = new Schema({
 
 
 const UserModel = model("User", UserSchema)
-
 
 
 export class UserRepository implements IUserRepository {

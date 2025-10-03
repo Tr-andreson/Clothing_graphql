@@ -1,4 +1,3 @@
-// application/usecases/RegisterUserUseCase.ts
 import { IUserRepository } from "../../domain/repositories/IUserRepository";
 import { IHashService } from "../../domain/services/IHashService";
 import { User } from "../../domain/entities/User";
