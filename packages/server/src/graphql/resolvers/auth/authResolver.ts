@@ -4,7 +4,7 @@ import { RegisterInputT, LoginInputT, RegisterResponseT } from "./dto/auth.dto";
 import { RegisterUserUseCase } from "../../../application/usecases/RegisterUserUseCase";
 import { LoginUserUseCase } from "../../../application/usecases/LoginUserUseCase";
 import { BcryptService } from "../../../infrastructure/services/hashingService/bcrypt.service";
-import { UserRepository } from "../../../infrastructure/db/userModel";
+import { UserRepository } from "../../../infrastructure/db/mongodb/userModel";
 
 @Resolver()
 export class AuthResolver {

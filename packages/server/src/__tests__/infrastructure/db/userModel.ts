@@ -1,4 +1,4 @@
-import { UserRepository } from "../../../infrastructure/db/userModel";
+import { UserRepository } from "../../../infrastructure/db/mongodb/userModel";
 
 describe("User model", () => {
   let userRepository: UserRepository;

@@ -1,7 +1,6 @@
-
 import { model, Schema } from "mongoose";
-import { User } from "../../domain/entities/User";
-import { IUserRepository } from "../../domain/repositories/IUserRepository";
+import { User } from "../../../domain/entities/User";
+import { IUserRepository } from "../../../domain/repositories/IUserRepository";
 
 
 const EMAIL_PROVIDER = {

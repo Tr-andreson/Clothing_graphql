@@ -1,4 +1,4 @@
-import { ProductRepository } from "../../../infrastructure/db/productModel"
+import { ProductRepository } from "../../../infrastructure/db/mongodb/productModel"
 
 describe("Product model", () => {
   let productRepository: ProductRepository;

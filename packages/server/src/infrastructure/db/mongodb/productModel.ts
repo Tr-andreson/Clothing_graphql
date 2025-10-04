@@ -1,6 +1,6 @@
 import { model, Schema } from "mongoose";
-import { Product } from "../../domain/entities/Product";
-import { IProductRepository } from "../../domain/repositories/IProductRepository";
+import { Product } from "../../../domain/entities/Product";
+import { IProductRepository } from "../../../domain/repositories/IProductRepository";
 
 
 const ProductSchema = new Schema({

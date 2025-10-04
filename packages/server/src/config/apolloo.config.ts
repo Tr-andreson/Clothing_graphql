@@ -3,13 +3,25 @@ import { AuthResolver } from "../graphql/resolvers/auth/authResolver"
 import { ProductR } from "../graphql/resolvers/product/ProudctR"
 import { buildSchema } from "type-graphql"
 import { expressMiddleware } from "@as-integrations/express4"
+import { ApolloServerPluginCacheControl } from '@apollo/server/plugin/cacheControl';
+import { MerchantResolver } from "../graphql/resolvers/merchantt/merchantResolver"
+import { BrandResovler } from "../graphql/resolvers/brand/brandResolver"
 
 
 export const ApollooConfig = async (app: any) => {
   const apolloServer = new ApolloServer({
     schema: await buildSchema({
-      resolvers: [AuthResolver, ProductR]
-    })
+      resolvers: [AuthResolver, ProductR, MerchantResolver, BrandResovler]
+    }),
+    plugins: [
+      ApolloServerPluginCacheControl({
+        defaultMaxAge: 20,
+        calculateHttpHeaders: false, //does not send the http cache
+      }),
+      // ApolloServerPluginUsageReporting({
+      //   fieldLevelInstrumentation: 0.5
+      // })
+    ]
   })
   apolloServer.addPlugin(app)
 

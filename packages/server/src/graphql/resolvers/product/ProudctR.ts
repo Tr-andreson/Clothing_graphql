@@ -1,7 +1,7 @@
 import { ProductUseCase } from "../../../application/usecases/product/productUseCase";
-import { ProductModel, ProductRepository } from "../../../infrastructure/db/productModel";
 import { Resolver, Query, Mutation, Arg } from "type-graphql";
 import { ProductInputT, ProductT } from "./dto";
+import { ProductRepository } from "../../../infrastructure/db/mongodb/productModel";
 
 @Resolver()
 export class ProductR {

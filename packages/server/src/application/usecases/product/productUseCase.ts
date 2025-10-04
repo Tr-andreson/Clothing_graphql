@@ -1,4 +1,4 @@
-import { ProductRepository } from "../../../infrastructure/db/productModel";
+import { ProductRepository } from "../../../infrastructure/db/mongodb/productModel";
 import { Product } from "../../../domain/entities/Product";
 
 export class ProductUseCase {
