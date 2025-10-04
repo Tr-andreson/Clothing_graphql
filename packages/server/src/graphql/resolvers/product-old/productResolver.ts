@@ -1,4 +1,4 @@
-import { Product } from "../../../db/modals/product.modal";
+// import { Product } from "../../../db/modals/product.modal";
 import { Arg, Mutation, Query, Resolver, Ctx } from "type-graphql"
 // import slugger from "slug"
 import { GraphQLUpload, FileUpload } from "graphql-upload-ts";

@@ -8,6 +8,7 @@ import path from "path";
 import { apolloConfig } from "./config/apollo.config";
 import { corsConfig } from "./config/cors.config";
 import { databaseConnection } from "./config/database.config";
+import { ApollooConfig } from "./config/apolloo.config";
 // import { databaseConnection } from "./config/database.config";
 
 
@@ -33,7 +34,8 @@ corsConfig(app)
 databaseConnection()
 
 // apollo config 
-apolloConfig(app)
+// apolloConfig(app)
+ApollooConfig(app)
 
 app.get("/check", (_req, res) => {
   res.send("hello world");

@@ -1,4 +1,4 @@
-
+// old code not used
 import { ApolloServer } from "apollo-server-express"
 import { buildSchema } from "type-graphql"
 import { AuthResolver } from "../graphql/resolvers/auth/authResolver"
