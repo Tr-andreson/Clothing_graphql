@@ -54,6 +54,10 @@ export class ProductRepository implements IProductRepository {
     const products = await ProductModel.find({});
     return products
   }
+
+  async f(): Promise<any> {
+    throw new Error("methord not implemented")
+  }
   async add(data: Product): Promise<string> {
     await ProductModel.create(data);
     return "Product added successfully";

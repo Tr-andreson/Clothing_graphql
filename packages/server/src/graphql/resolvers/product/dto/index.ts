@@ -1,4 +1,5 @@
 
+import { Contains, MaxLength, IsBoolean, MinLength } from "class-validator";
 import { ObjectType, Field, Float, InputType } from "type-graphql";
 
 @ObjectType()
@@ -36,23 +37,28 @@ export class ProductT {
 
 @InputType()
 export class ProductInputT {
-
   @Field()
   sku: string;
 
   @Field()
+  @MaxLength(10)
   name: string;
 
   @Field()
+  @MaxLength(10)
   slug: string;
 
   @Field({ nullable: true })
+  @Contains('https')
   imageUrl?: string;
 
   @Field({ nullable: true })
   imageKey?: string;
 
   @Field({ nullable: true })
+  @MinLength(10, {
+    message: "size is too short ! Above 10 words"
+  })
   description?: string;
 
   @Field(_type => Number)
@@ -62,9 +68,11 @@ export class ProductInputT {
   price: number;
 
   @Field()
+  @IsBoolean()
   taxable: boolean;
 
   @Field()
+  @IsBoolean()
   isActive: boolean;
 
 }

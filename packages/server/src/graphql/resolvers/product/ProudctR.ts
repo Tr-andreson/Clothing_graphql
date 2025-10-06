@@ -2,6 +2,7 @@ import { Resolver, Query, Mutation, Arg } from "type-graphql";
 import { ProductInputT, ProductT } from "./dto";
 import { ProductUseCase } from "@/application/usecases/product/productUseCase";
 import { ProductRepository } from "@/infrastructure/db/mongodb/productModel";
+import { GraphQLError } from "graphql";
 
 @Resolver()
 export class ProductR {
@@ -13,8 +14,14 @@ export class ProductR {
 
   @Query(() => [ProductT])
   public async Products() {
-    const value = await this.productUseCase.get();
-    return value;
+    try {
+      const value = await this.productUseCase.get();
+      return value;
+
+    } catch (err) {
+      console.log(err, "err debug");
+      throw new GraphQLError(err);
+    }
   }
 
   @Mutation(() => String)

@@ -11,7 +11,8 @@ import { ProductR } from "@/graphql/resolvers/product/ProudctR";
 export const ApollooConfig = async (app: any) => {
   const apolloServer = new ApolloServer({
     schema: await buildSchema({
-      resolvers: [AuthResolver, ProductR, MerchantResolver, BrandResovler]
+      resolvers: [AuthResolver, ProductR, MerchantResolver, BrandResovler],
+      validate: true
     }),
     plugins: [
       ApolloServerPluginCacheControl({
