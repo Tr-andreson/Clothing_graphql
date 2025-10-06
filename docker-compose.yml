@@ -18,6 +18,9 @@ services:
 
   server:
     build: "./packages/server"
+    deploy:
+      mode: replicated
+      replicas: 2
     expose:
       - "8000"
     environment:

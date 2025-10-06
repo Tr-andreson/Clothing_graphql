@@ -23,13 +23,12 @@ WORKDIR /app
 COPY package*.json ./
 
 # Install only production dependencies
-RUN npm install --omit=dev && npm cache clean --force
+# RUN npm install --omit=dev && npm cache clean --force
+RUN npm install 
 
 # Copy built app from builder
 COPY --from=builder /app/dist ./dist
 
-# Copy any runtime config (if needed, e.g., prisma schema, migrations)
-# COPY --from=builder /app/prisma ./prisma
 
 # Start the app
 CMD ["npm", "run", "start"]
