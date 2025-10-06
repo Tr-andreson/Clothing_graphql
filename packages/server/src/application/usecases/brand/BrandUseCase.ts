@@ -1,4 +1,4 @@
-import { BrandRepository } from "../../../infrastructure/db/mongodb/brandModel";
+import { BrandRepository } from "@/infrastructure/db/mongodb/brandModel"
 
 export class BrandUseCase {
   private readonly branduseCase: BrandRepository

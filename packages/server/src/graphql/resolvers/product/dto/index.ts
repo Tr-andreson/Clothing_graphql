@@ -24,7 +24,7 @@ export class ProductT {
   @Field(() => Float)
   quantity: number;
 
-  @Field(() => Float)
+  @Field(_type => Float)
   price: number;
 
   @Field()
@@ -55,10 +55,10 @@ export class ProductInputT {
   @Field({ nullable: true })
   description?: string;
 
-  @Field(() => Float)
+  @Field(_type => Number)
   quantity: number;
 
-  @Field(() => Float)
+  @Field(_type => Number)
   price: number;
 
   @Field()

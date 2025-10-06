@@ -1,5 +1,5 @@
-import { IUserRepository } from "../../domain/repositories/IUserRepository";
-import { IHashService } from "../../domain/services/IHashService";
+import { IUserRepository } from "@/domain/repositories/IUserRepository";
+import { IHashService } from "@/domain/services/IHashService";
 
 export class LoginUserUseCase {
   constructor(

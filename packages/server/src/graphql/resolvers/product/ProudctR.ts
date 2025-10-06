@@ -1,7 +1,7 @@
-import { ProductUseCase } from "../../../application/usecases/product/productUseCase";
 import { Resolver, Query, Mutation, Arg } from "type-graphql";
 import { ProductInputT, ProductT } from "./dto";
-import { ProductRepository } from "../../../infrastructure/db/mongodb/productModel";
+import { ProductUseCase } from "@/application/usecases/product/productUseCase";
+import { ProductRepository } from "@/infrastructure/db/mongodb/productModel";
 
 @Resolver()
 export class ProductR {
@@ -12,7 +12,7 @@ export class ProductR {
   }
 
   @Query(() => [ProductT])
-  public async products() {
+  public async Products() {
     const value = await this.productUseCase.get();
     return value;
   }

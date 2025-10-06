@@ -5,11 +5,9 @@ import dotenv from "dotenv";
 import express from "express";
 import { graphqlUploadExpress } from "graphql-upload-ts";
 import path from "path";
-import { apolloConfig } from "./config/apollo.config";
 import { corsConfig } from "./config/cors.config";
 import { databaseConnection } from "./config/database.config";
 import { ApollooConfig } from "./config/apolloo.config";
-// import { databaseConnection } from "./config/database.config";
 
 
 dotenv.config()
@@ -43,3 +41,4 @@ app.get("/check", (_req, res) => {
 })
 
 export default app
+

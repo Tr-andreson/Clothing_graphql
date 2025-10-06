@@ -1,5 +1,5 @@
-import { ProductRepository } from "../../../infrastructure/db/mongodb/productModel";
-import { Product } from "../../../domain/entities/Product";
+import { Product } from "@/domain/entities/Product";
+import { ProductRepository } from "@/infrastructure/db/mongodb/productModel";
 
 export class ProductUseCase {
   constructor(

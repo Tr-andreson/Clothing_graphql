@@ -1,11 +1,11 @@
 import { ApolloServer } from "@apollo/server"
-import { AuthResolver } from "../graphql/resolvers/auth/authResolver"
-import { ProductR } from "../graphql/resolvers/product/ProudctR"
 import { buildSchema } from "type-graphql"
 import { expressMiddleware } from "@as-integrations/express4"
 import { ApolloServerPluginCacheControl } from '@apollo/server/plugin/cacheControl';
-import { MerchantResolver } from "../graphql/resolvers/merchantt/merchantResolver"
-import { BrandResovler } from "../graphql/resolvers/brand/brandResolver"
+import { MerchantResolver } from "@/graphql/resolvers/merchant/merchantResolver"
+import { BrandResovler } from "@/graphql/resolvers/brand/brandResolver"
+import { AuthResolver } from "@/graphql/resolvers/auth/authResolver";
+import { ProductR } from "@/graphql/resolvers/product/ProudctR";
 
 
 export const ApollooConfig = async (app: any) => {

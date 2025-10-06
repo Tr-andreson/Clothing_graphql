@@ -1,4 +1,4 @@
-import { MerchantRepository } from "../../../infrastructure/db/mongodb/merchantModel"
+import { MerchantRepository } from "@/infrastructure/db/mongodb/merchantModel"
 
 export class MerchantUserCase {
   constructor(

@@ -1,6 +1,6 @@
-import { BrandUseCase } from "../../../application/usecases/brand/BrandUseCase";
 import { Arg, Mutation, Query, Resolver } from "type-graphql";
 import { BrandRequestT, BrandResponseT } from "./dto";
+import { BrandUseCase } from "@/application/usecases/brand/BrandUseCase";
 
 @Resolver()
 export class BrandResovler {
