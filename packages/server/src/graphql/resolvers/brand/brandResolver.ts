@@ -1,52 +1,30 @@
-import { Brand } from "../../../db/modals/brand.model";
-import { Arg, Mutation, Query, Resolver } from "type-graphql"
-import { BrandT } from "./entities/brand.entity";
-import { BrandInputT } from "./dto/brand.dto";
-
-
-
+import { Arg, Mutation, Query, Resolver } from "type-graphql";
+import { BrandRequestT, BrandResponseT } from "./dto";
+import { BrandUseCase } from "@/application/usecases/brand/BrandUseCase";
 
 @Resolver()
-export class BrandResolver {
-  constructor() {
+export class BrandResovler {
+  public readonly brandService: BrandUseCase
+
+  constructor(
+  ) {
+    this.brandService = new BrandUseCase()
   }
 
-  @Query(() => [BrandT])
-  public async getBrands(): Promise<BrandT[] | any> {
 
-    try {
-      const brand = await Brand.find()
-
-      return brand
-    } catch (error) {
-      return "error"
-
-    }
+  @Query(() => [BrandResponseT])
+  public async Brand() {
+    return this.brandService.findAll()
   }
 
   @Mutation(() => String)
   public async addBrand(
-    @Arg("body") body: BrandInputT
-  ): Promise<string> {
-    try {
-      const brand = new Brand({
-        name: body.name,
-        slug: body.slug,
-        description: body.description,
-        isActive: body.isActive,
-        imageUrl: body.imageUrl,
-        merchant: null
-      });
+    @Arg("body") body: BrandRequestT
 
-      await brand.save();
-      return "brand value"
-
-    } catch (error) {
-      console.log(error)
-      return "error occured"
-    }
+  ) {
+    await this.brandService.add(body)
+    return "Brand Added succesfullyjd"
   }
-
 
 }
 

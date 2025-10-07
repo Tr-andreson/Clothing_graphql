@@ -1,6 +1,6 @@
+import "reflect-metadata"
 import dotenv from "dotenv"
 import http from "node:http"
-import "reflect-metadata"
 import app from "./appConfig"
 dotenv.config()
 
