@@ -55,7 +55,10 @@ const MerchantModel = model('Merchant', MerchantSchema);
 
 export class MerchantRepository implements IMerchantRepository {
   async findAll(): Promise<any> {
-    return await MerchantModel.find({})
+    let merchant = await MerchantModel.find({
+      isActive: true
+    }).populate("brand")
+    return merchant
   }
   async add(data: Merchant): Promise<any> {
     const merchant = await MerchantModel.create(data)

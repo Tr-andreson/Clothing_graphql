@@ -1,9 +1,13 @@
-import { MERCHANT_STATUS } from "../../../../utils/constants";
-import { Field, InputType, ObjectType, Int } from "type-graphql";
+import { MERCHANT_STATUS } from "@/utils/constants";
+import { Field, InputType, Int, ObjectType } from "type-graphql";
+import { BrandResponseT } from "../../brand/dto";
 
 
 @ObjectType()
 export class MerchantResposeT {
+  @Field()
+  id: string
+
   @Field()
   name: string
 
@@ -15,6 +19,9 @@ export class MerchantResposeT {
 
   @Field()
   brandName: string
+
+  @Field(() => BrandResponseT, { nullable: true })
+  brand?: BrandResponseT
 
   @Field()
   business: string
@@ -41,6 +48,9 @@ export class MerchantRequestT {
 
   @Field()
   brandName: string
+
+  @Field()
+  brand: string
 
   @Field()
   business: string

@@ -43,7 +43,11 @@ const ProductSchema = new Schema({
   created: {
     type: Date,
     default: Date.now
-  }
+  },
+  brand: {
+    type: Schema.Types.ObjectId,
+    ref: 'Brand',
+  },
 });
 
 export const ProductModel = model('Product', ProductSchema);
@@ -51,7 +55,10 @@ export const ProductModel = model('Product', ProductSchema);
 
 export class ProductRepository implements IProductRepository {
   async findAll(): Promise<any> {
-    const products = await ProductModel.find({});
+    const products = await ProductModel.find({
+      isActive: true
+    }).populate("brand")
+    console.log(products, "products debug");
     return products
   }
 

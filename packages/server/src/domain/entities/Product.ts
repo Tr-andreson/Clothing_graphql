@@ -1,3 +1,5 @@
+import { BrandEntity } from "./Brand";
+
 export class Product {
   constructor(
     public readonly sku: string,
@@ -10,6 +12,7 @@ export class Product {
     public readonly price: number,
     public readonly taxable: boolean,
     public readonly isActive: boolean,
+    public readonly brand: [BrandEntity]
   ) {
 
   }

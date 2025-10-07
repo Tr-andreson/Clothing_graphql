@@ -1,7 +1,10 @@
-import { Field, InputType, ObjectType } from "type-graphql";
+import { Field, ID, InputType, ObjectType } from "type-graphql";
 
 @ObjectType()
 export class BrandResponseT {
+  @Field(() => ID)
+  id: string
+
   @Field()
   name: string
 

@@ -1,4 +1,4 @@
-# EcomGraphql
+G# EcomGraphql
 # Graphql_Ecommerce
 change
 # GraphqlProject
@@ -52,3 +52,17 @@ Auth Layer
 i 18 i 10
 
 # GraphqlProject
+
+
+
+user can see the products
+
+to add to cart or add to wishlist you have to login  / register
+user can see the product details
+user can see related items
+user can make the payment
+
+dashboard
+user can add the crud the products
+user can see sales
+

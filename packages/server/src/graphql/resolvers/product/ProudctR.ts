@@ -24,6 +24,7 @@ export class ProductR {
     }
   }
 
+
   @Mutation(() => String)
   public async addProduct(
     @Arg("body") body: ProductInputT

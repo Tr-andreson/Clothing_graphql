@@ -39,7 +39,7 @@ const BrandSchema = new Schema({
   }
 });
 
-const BrandModel = model('Brand', BrandSchema);
+export const BrandModel = model('Brand', BrandSchema);
 
 
 export class BrandRepository implements IBrandInterface {
@@ -47,7 +47,9 @@ export class BrandRepository implements IBrandInterface {
     return await BrandModel.create(data)
   }
   async findAll(): Promise<any> {
-    return await BrandModel.find({})
+    let brand = await BrandModel.find({})
+    console.log(brand, "brand debug");
+    return brand
   }
 }
 

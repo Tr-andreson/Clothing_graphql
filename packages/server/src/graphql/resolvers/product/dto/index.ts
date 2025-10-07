@@ -1,6 +1,7 @@
 
 import { Contains, MaxLength, IsBoolean, MinLength } from "class-validator";
 import { ObjectType, Field, Float, InputType } from "type-graphql";
+import { BrandResponseT } from "../../brand/dto";
 
 @ObjectType()
 export class ProductT {
@@ -33,6 +34,10 @@ export class ProductT {
 
   @Field()
   isActive: boolean;
+
+  @Field(() => BrandResponseT, { nullable: true })
+  brand?: BrandResponseT
+
 }
 
 @InputType()
@@ -74,5 +79,8 @@ export class ProductInputT {
   @Field()
   @IsBoolean()
   isActive: boolean;
+
+  @Field()
+  brand: string;
 
 }
