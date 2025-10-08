@@ -25,6 +25,20 @@ export class ProductR {
   }
 
 
+  @Query(() => [ProductT])
+  public async ProductById(
+    @Arg("id") id: string
+  ) {
+    try {
+      const product = await this.productUseCase.getById(id);
+      return product;
+
+    } catch (err) {
+      console.log(err, "err debug");
+      throw new GraphQLError(err);
+    }
+  }
+
   @Mutation(() => String)
   public async addProduct(
     @Arg("body") body: ProductInputT
