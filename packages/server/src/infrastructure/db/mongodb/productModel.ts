@@ -54,11 +54,16 @@ export const ProductModel = model('Product', ProductSchema);
 
 
 export class ProductRepository implements IProductRepository {
+  async findById(id: string): Promise<any> {
+    const product = await ProductModel.find({
+      _id: id
+    })
+    return product
+  }
   async findAll(): Promise<any> {
     const products = await ProductModel.find({
       isActive: true
     }).populate("brand")
-    console.log(products, "products debug");
     return products
   }
 
