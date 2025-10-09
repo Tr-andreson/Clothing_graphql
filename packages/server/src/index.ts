@@ -4,7 +4,6 @@ import http from "node:http"
 import app from "./appConfig"
 dotenv.config()
 
-
 const main = () => {
   const server = http.createServer(app)
   server.listen(process.env.PORT || 8000, () => {

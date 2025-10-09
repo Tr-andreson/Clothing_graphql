@@ -1,0 +1,16 @@
+
+query Products {
+    Products {
+        id
+        sku
+        name
+        slug
+        imageUrl
+        imageKey
+        description
+        quantity
+        price
+        taxable
+        isActive
+    }
+}
