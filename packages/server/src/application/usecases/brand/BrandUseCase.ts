@@ -6,8 +6,8 @@ export class BrandUseCase {
     this.branduseCase = new BrandRepository()
   }
 
-  public async findAll() {
-    return await this.branduseCase.findAll()
+  public async findAll(props: any) {
+    return await this.branduseCase.findAlll(props)
   }
 
   public async add(data: any) {

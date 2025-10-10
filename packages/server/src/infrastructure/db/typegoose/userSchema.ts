@@ -2,10 +2,11 @@ import { User } from "@/domain/entities/User";
 import { IUserRepository } from "@/domain/repositories/IUserRepository";
 import { User as UserEntity } from "@/domain/userEntity";
 import { UserRole } from "@/utils/constants/enums"
-import { getModelForClass, prop } from "@typegoose/typegoose";
+import { getModelForClass, modelOptions, prop } from "@typegoose/typegoose";
 
+@modelOptions({ schemaOptions: { collection: "Users" } })
 export class UserSchema implements UserEntity {
-  @prop({ required: true })
+  @prop({ autopopulate: true })
   id: string;
 
   @prop({ unique: true, required: true })
@@ -21,32 +22,52 @@ export class UserSchema implements UserEntity {
   last_name: string;
 
   @prop()
-  phone?: string | undefined;
+  phone?: string
+
+
+  @prop({ default: false })
+  email_verified: boolean;
+
+  @prop({ default: "user role" })
+  role: UserRole;
 
   @prop({ default: Date.now() })
   created_at: Date;
 
   @prop()
   updated_at: Date;
-
-  @prop()
-  email_verified: boolean;
-
-  @prop()
-  role: UserRole;
 }
 
 export const UserModel = getModelForClass(UserSchema);
 
 
 export class UserRepository implements IUserRepository {
-  async save(user: User): Promise<User | string> {
+  async save(user: any): Promise<User | string> {
     const product = await UserModel.create(user)
     await product.save()
     return "Product added succesfully"
   }
   async findAll(): Promise<User[] | any> {
-    const products = await UserModel.find({})
+    const products = await UserModel.aggregate([
+      {
+        $lookup: {
+          from: "userAddress",
+          localField: "_id",
+          foreignField: "user_id",
+          as: "address"
+        }
+      },
+      {
+        $lookup: {
+          from: "userProfile",
+          localField: "_id",
+          foreignField: "user_id",
+          as: "profile"
+        }
+      },
+
+
+    ])
     return products
   }
 
@@ -55,5 +76,11 @@ export class UserRepository implements IUserRepository {
       email
     })
     return productById
+  }
+
+  async findByObject(props: any) {
+    const product = await UserModel.find().select(props)
+    console.log(product, "product debug");
+    return product
   }
 }

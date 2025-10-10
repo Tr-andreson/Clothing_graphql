@@ -1,6 +1,8 @@
-import { Arg, Mutation, Query, Resolver } from "type-graphql";
+import { Arg, Info, Mutation, Query, Resolver } from "type-graphql";
 import { BrandRequestT, BrandResponseT } from "./dto";
 import { BrandUseCase } from "@/application/usecases/brand/BrandUseCase";
+import { GraphQLResolveInfo } from "graphql";
+import graphqlFields from "graphql-fields";
 
 @Resolver()
 export class BrandResovler {
@@ -13,8 +15,13 @@ export class BrandResovler {
 
 
   @Query(() => [BrandResponseT])
-  public async Brand() {
-    return this.brandService.findAll()
+  public async Brand(
+    @Info() info: GraphQLResolveInfo
+  ) {
+
+    const fields = graphqlFields(info);
+    const selectedFields = Object.keys(fields).join(" ");
+    return await this.brandService.findAll(selectedFields)
   }
 
   @Mutation(() => String)
