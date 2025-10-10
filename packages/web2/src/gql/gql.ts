@@ -14,12 +14,12 @@ import { TypedDocumentNode as DocumentNode } from '@graphql-typed-document-node/
  * Learn more about it here: https://the-guild.dev/graphql/codegen/plugins/presets/preset-client#reducing-bundle-size
  */
 type Documents = {
-    "query ProductById {\n  ProductById(id: \"\") {\n    id\n    sku\n    name\n    slug\n    imageUrl\n    imageKey\n    description\n    quantity\n    price\n    taxable\n    isActive\n  }\n}": typeof types.ProductByIdDocument,
-    "query Products {\n  Products {\n    id\n    sku\n    name\n    slug\n    imageUrl\n    imageKey\n    description\n    quantity\n    price\n    taxable\n    isActive\n  }\n}": typeof types.ProductsDocument,
+  "query ProductById {\n  ProductById(id: \"\") {\n    id\n    sku\n    name\n    slug\n    imageUrl\n    imageKey\n    description\n    quantity\n    price\n    taxable\n    isActive\n  }\n}": typeof types.ProductByIdDocument,
+  "query Products {\n  Products {\n    id\n    sku\n    name\n    slug\n    imageUrl\n    imageKey\n    description\n    quantity\n    price\n    taxable\n    isActive\n  }\n}": typeof types.ProductsDocument,
 };
 const documents: Documents = {
-    "query ProductById {\n  ProductById(id: \"\") {\n    id\n    sku\n    name\n    slug\n    imageUrl\n    imageKey\n    description\n    quantity\n    price\n    taxable\n    isActive\n  }\n}": types.ProductByIdDocument,
-    "query Products {\n  Products {\n    id\n    sku\n    name\n    slug\n    imageUrl\n    imageKey\n    description\n    quantity\n    price\n    taxable\n    isActive\n  }\n}": types.ProductsDocument,
+  "query ProductById {\n  ProductById(id: \"\") {\n    id\n    sku\n    name\n    slug\n    imageUrl\n    imageKey\n    description\n    quantity\n    price\n    taxable\n    isActive\n  }\n}": types.ProductByIdDocument,
+  "query Products {\n  Products {\n    id\n    sku\n    name\n    slug\n    imageUrl\n    imageKey\n    description\n    quantity\n    price\n    taxable\n    isActive\n  }\n}": types.ProductsDocument,
 };
 
 /**
@@ -49,4 +49,4 @@ export function graphql(source: string) {
   return (documents as any)[source] ?? {};
 }
 
-export type DocumentType<TDocumentNode extends DocumentNode<any, any>> = TDocumentNode extends DocumentNode<  infer TType,  any>  ? TType  : never;
+export type DocumentType<TDocumentNode extends DocumentNode<any, any>> = TDocumentNode extends DocumentNode<infer TType, any> ? TType : never;

@@ -18,7 +18,7 @@
       "devDependencies": {
         "@eslint/eslintrc": "^3",
         "@graphql-codegen/cli": "6.0.0",
-        "@graphql-codegen/client-preset": "5.1.0",
+        "@graphql-codegen/client-preset": "^5.1.0",
         "@graphql-codegen/introspection": "5.0.0",
         "@parcel/watcher": "^2.5.1",
         "@tailwindcss/postcss": "^4",

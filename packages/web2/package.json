@@ -35,6 +35,6 @@
     "typescript": "^5",
     "@graphql-codegen/introspection": "5.0.0",
     "@graphql-codegen/cli": "6.0.0",
-    "@graphql-codegen/client-preset": "5.1.0"
+    "@graphql-codegen/client-preset": "^5.1.0"
   }
 }
