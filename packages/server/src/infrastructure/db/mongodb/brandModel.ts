@@ -47,7 +47,13 @@ export class BrandRepository implements IBrandInterface {
     return await BrandModel.create(data)
   }
   async findAll(): Promise<any> {
-    let brand = await BrandModel.find({})
+    let brand = await BrandModel.find()
+    console.log(brand, "brand debug");
+    return brand
+  }
+
+  async findAlll(props: any): Promise<any> {
+    let brand = await BrandModel.find().select(props)
     console.log(brand, "brand debug");
     return brand
   }
