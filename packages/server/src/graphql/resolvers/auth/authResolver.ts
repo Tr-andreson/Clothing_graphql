@@ -1,10 +1,10 @@
 // presentation/graphql/resolvers/AuthResolver.ts
 import { Arg, Mutation, Query, Resolver } from "type-graphql";
 import { RegisterInputT, LoginInputT, RegisterResponseT } from "./dto/auth.dto";
-import { RegisterUserUseCase } from "../../../application/usecases/RegisterUserUseCase";
-import { LoginUserUseCase } from "../../../application/usecases/LoginUserUseCase";
-import { BcryptService } from "../../../infrastructure/services/hashingService/bcrypt.service";
-import { UserRepository } from "../../../infrastructure/db/mongodb/userModel";
+import { LoginUserUseCase } from "@/application/usecases/LoginUserUseCase";
+import { RegisterUserUseCase } from "@/application/usecases/RegisterUserUseCase";
+import { UserRepository } from "@/infrastructure/db/mongodb/userModel";
+import { BcryptService } from "@/infrastructure/services/hashingService/bcrypt.service";
 
 @Resolver()
 export class AuthResolver {
@@ -36,4 +36,4 @@ export class AuthResolver {
   async loginUserMutation(@Arg("body") body: LoginInputT) {
     return await this.loginUser.execute(body);
   }
-}
+} 

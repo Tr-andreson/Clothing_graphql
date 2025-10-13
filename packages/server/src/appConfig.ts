@@ -5,10 +5,8 @@ import dotenv from "dotenv";
 import express from "express";
 import { graphqlUploadExpress } from "graphql-upload-ts";
 import path from "path";
-import { corsConfig } from "./config/cors.config";
-import { databaseConnection } from "./config/database.config";
 import { ApollooConfig } from "./config/apolloo.config";
-
+import { databaseConnection } from "./config/database.config";
 
 dotenv.config()
 
@@ -25,7 +23,7 @@ app.use(bodyParser.urlencoded({ extended: true }))
 app.use(cookieParser())
 
 // cors config
-corsConfig(app)
+// corsConfig(app)
 
 // redisConfig(app)
 // database connection
@@ -37,7 +35,6 @@ ApollooConfig(app)
 
 app.get("/check", (_req, res) => {
   res.send("hello world");
-
 })
 
 export default app
