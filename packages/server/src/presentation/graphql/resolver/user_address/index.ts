@@ -1,4 +1,4 @@
-import { UserAddressRepository } from "@/infrastructure/db/typegoose/userAddressSchema";
+import { UserAddressRepository } from "@/infrastructure/db/typegoose/users/userAddressSchema";
 import { Arg, Mutation, Resolver } from "type-graphql";
 import { UserAddressRequest } from "./query";
 

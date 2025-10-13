@@ -59,8 +59,7 @@ export class UserAddressRepository implements IUserRepository {
     throw new Error("Method not implemented.");
   }
   async save(user: any): Promise<User | any> {
-    const product = await UserAddressModel.create(user)
-    console.log(product, "product debug");
+    await UserAddressModel.create(user)
     return "Product added succesfully"
   }
 
