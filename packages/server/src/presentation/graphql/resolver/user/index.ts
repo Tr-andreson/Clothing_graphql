@@ -1,5 +1,6 @@
 import { Mutation, Resolver, Arg, Query, Info } from "type-graphql";
 import { UserInputT, UserResonseT } from "./query";
+import { UserRepository } from "@/infrastructure/db/typegoose/users/userSchema";
 import { GraphQLResolveInfo } from "graphql";
 import graphqlFields from "graphql-fields";
 import { UserRepository } from "@/infrastructure/db/typegoose/users/userSchema";

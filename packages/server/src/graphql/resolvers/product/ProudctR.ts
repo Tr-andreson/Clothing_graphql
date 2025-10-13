@@ -19,7 +19,6 @@ export class ProductR {
       return value;
 
     } catch (err) {
-      console.log(err, "err debug");
       throw new GraphQLError(err);
     }
   }
@@ -34,7 +33,6 @@ export class ProductR {
       return product;
 
     } catch (err) {
-      console.log(err, "err debug");
       throw new GraphQLError(err);
     }
   }

@@ -80,7 +80,6 @@ export class UserRepository implements IUserRepository {
 
   async findByObject(props: any) {
     const product = await UserModel.find().select(props)
-    console.log(product, "product debug");
     return product
   }
 }
