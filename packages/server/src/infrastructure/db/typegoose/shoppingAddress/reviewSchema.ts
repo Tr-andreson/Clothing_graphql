@@ -2,8 +2,13 @@ import { Review } from "@/domain/shoppingEntity";
 
 class ReviewsSchema implements Review {
   id: string;
-  wishlist_id: string;
   product_id: string;
-  added_at: Date;
+  user_id: string;
+  rating: number;
+  title?: string | undefined;
+  comment?: string | undefined;
+  is_approved: boolean;
+  created_at: Date;
+  updated_at: Date;
 
 }

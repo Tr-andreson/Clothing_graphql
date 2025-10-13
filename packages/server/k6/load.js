@@ -4,27 +4,32 @@ import { check, sleep } from 'k6';
 
 export const options = {
   stages: [
-    { duration: '1m', target: 50 },  // ramp-up to 50 users
-    { duration: '2m', target: 50 },  // stay at 50 users
-    { duration: '1m', target: 0 },   // ramp-down
+    { duration: '1m', target: 1000000 },  // ramp-up to 50 users
+    // { duration: '2m', target: 50 },  // stay at 50 users
+    // { duration: '1m', target: 0 },   // ramp-down
   ],
 };
 
-const url = 'http://localhost:9000/graphql';
+// const url = 'http://localhost:9000/graphql';
+const url = 'http://localhost:8080/graphql';
 
-export default function() {
+export default function () {
   const query = `
-    query GetUsers {
-      getUsers {
-        _id
-        email
-        phoneNumber
-        firstName
-        lastName
-        role
-        created
-      }
+query Products {
+    Products {
+        id
+        sku
+        name
+        slug
+        imageUrl
+        imageKey
+        description
+        quantity
+        price
+        taxable
+        isActive
     }
+}
   `;
 
   const payload = JSON.stringify({
