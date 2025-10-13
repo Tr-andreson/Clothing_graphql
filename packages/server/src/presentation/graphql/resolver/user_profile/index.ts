@@ -1,6 +1,7 @@
 import { UserProfileRepository } from "@/infrastructure/db/typegoose/users/userProfileSchema";
 import { Arg, Mutation, Query, Resolver } from "type-graphql";
 import { UserProfileRequest, UserProfileResponse } from "./query";
+import { UserProfileRepository } from "@/infrastructure/db/typegoose/users/userProfileSchema";
 
 @Resolver()
 export class UserProfileResovler {
