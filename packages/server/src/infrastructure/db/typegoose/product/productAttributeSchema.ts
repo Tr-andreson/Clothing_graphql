@@ -6,5 +6,4 @@ class ProductAttributeSchema implements ProductAttribute {
   name: string;
   type: AttributeType;
   sort_order: number;
-
 }
