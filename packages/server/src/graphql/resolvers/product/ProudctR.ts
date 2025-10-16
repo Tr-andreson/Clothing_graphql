@@ -9,7 +9,7 @@ export class ProductR {
   private readonly productUseCase: ProductUseCase;
 
   constructor() {
-    this.productUseCase = new ProductUseCase(new ProductRepository());
+    this.productUseCase = new ProductUseCase(new ProductRepository())
   }
 
   @Query(() => [ProductT])

@@ -1,5 +1,4 @@
 import { UserProfile } from "@/domain/userEntity";
-import { UserSchema } from "./userSchema";
 import { getModelForClass, modelOptions, prop } from "@typegoose/typegoose";
 import { IUserRepository } from "@/domain/repositories/IUserRepository";
 import { User } from "@/domain/entities/User";
