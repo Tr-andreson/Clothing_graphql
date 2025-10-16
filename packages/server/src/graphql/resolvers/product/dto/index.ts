@@ -6,7 +6,7 @@ import { BrandResponseT } from "../../brand/dto";
 @ObjectType()
 export class ProductT {
   @Field()
-  id: string;
+  _id: string;
 
   @Field()
   sku: string;
