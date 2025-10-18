@@ -35,23 +35,23 @@ export class RegisterInputT {
 @ObjectType()
 export class RegisterResponseT {
   @Field()
-  id: string
+  _id: string
 
   @Field()
   email: string;
 
   @Field()
-  firstName: string;
+  first_name: string;
 
   @Field()
-  lastName: string;
+  last_name: string;
 
   @Field()
-  phoneNumber: string;
+  phone: string;
 
 
   @Field()
-  password: string;
+  password_hash: string;
 
   @Field({ nullable: true })
   merchant: string;
@@ -104,7 +104,7 @@ export class LoginInputT {
 export class LoginResponseT extends BaseResponseDto {
 
   @Field()
-  id: string
+  _id: string
 
   @Field()
   email: string;

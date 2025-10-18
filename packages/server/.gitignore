@@ -1,5 +1,7 @@
 bun.lock
 node_modules
+dist
+coverage
 # Keep environment variables out of version control
 .env
 

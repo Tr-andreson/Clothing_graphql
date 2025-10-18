@@ -5,12 +5,14 @@ import { RegisterUserUseCase } from "../../../application/usecases/RegisterUserU
 import { LoginUserUseCase } from "../../../application/usecases/LoginUserUseCase";
 import { BcryptService } from "../../../infrastructure/services/hashingService/bcrypt.service";
 import { UserRepository } from "../../../infrastructure/db/mongodb/userModel";
+import { RedisService } from "@/infrastructure/services/cachingService/ioredis";
 
 @Resolver()
 export class AuthResolver {
   private readonly registerUser: RegisterUserUseCase;
   private readonly loginUser: LoginUserUseCase;
   private readonly userRepo: UserRepository;
+  private readonly cacheService: RedisService
 
   constructor() {
     const userRepo = new UserRepository();
@@ -19,11 +21,22 @@ export class AuthResolver {
 
     this.registerUser = new RegisterUserUseCase(userRepo, hashService);
     this.loginUser = new LoginUserUseCase(userRepo, hashService);
+    this.cacheService = new RedisService()
   }
 
   @Query(() => [RegisterResponseT])
   async Users() {
-    return this.userRepo.findAll();
+    let cacheKey = "user"
+    let cachedUser = await this.cacheService.get(cacheKey)
+    console.log(cachedUser, "cachedUser debug");
+    if (cachedUser) return cachedUser
+
+    let users = await this.userRepo.findAll()
+    await this.cacheService.set({
+      key: "user",
+      value: users
+    })
+    return users
   }
 
   @Mutation(() => String)

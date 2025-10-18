@@ -12,10 +12,10 @@ class BrandSchema implements Brand {
   slug: string;
 
   @prop()
-  description?: string | undefined;
+  description: string
 
   @prop()
-  logo_url?: string | undefined;
+  logo_url: string
 
   @prop()
   is_active: boolean;

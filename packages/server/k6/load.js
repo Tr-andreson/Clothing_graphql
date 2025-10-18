@@ -4,14 +4,14 @@ import { check, sleep } from 'k6';
 
 export const options = {
   stages: [
-    { duration: '1m', target: 1000000 },  // ramp-up to 50 users
+    { duration: '1m', target: 100 },  // ramp-up to 50 users
     // { duration: '2m', target: 50 },  // stay at 50 users
     // { duration: '1m', target: 0 },   // ramp-down
   ],
 };
 
 // const url = 'http://localhost:9000/graphql';
-const url = 'http://localhost:8080/graphql';
+const url = 'http://localhost:8000/graphql';
 
 export default function () {
   const query = `
