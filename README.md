@@ -66,3 +66,4 @@ dashboard
 user can add the crud the products
 user can see sales
 
+change in readme file
