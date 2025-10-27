@@ -5,7 +5,7 @@ export class RedisService implements ICacheService {
   private readonly cache: Redis;
 
   constructor() {
-    this.cache = new Redis();
+    this.cache = new Redis(process.env.REDIS_URL || "redis://localhost:6379");
   }
 
   async set<T>({ key, value }: { key: string; value: T }): Promise<string> {

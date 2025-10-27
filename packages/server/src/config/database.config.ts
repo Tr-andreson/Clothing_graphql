@@ -12,6 +12,6 @@ export const databaseConnection = async () => {
     console.log("✅ MongoDB connection successful");
   } catch (error) {
     console.error("❌ MongoDB connection error:", error);
-    process.exit(1); // optional: stop the app if DB connection fails
+    process.exit(1); // stop the app if db connection fails
   }
 };

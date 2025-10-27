@@ -1,6 +1,6 @@
 
-import { Contains, MaxLength, IsBoolean, MinLength } from "class-validator";
-import { ObjectType, Field, Float, InputType } from "type-graphql";
+import { Contains, IsBoolean, IsNumber, MaxLength, MinLength } from "class-validator";
+import { Field, InputType, Int, ObjectType } from "type-graphql";
 import { BrandResponseT } from "../../brand/dto";
 
 @ObjectType()
@@ -26,10 +26,10 @@ export class ProductT {
   @Field({ nullable: true })
   description?: string;
 
-  @Field(() => Float)
+  @Field(_type => Int)
   quantity: number;
 
-  @Field(_type => Float)
+  @Field(_type => Int)
   price: number;
 
   @Field()
@@ -49,7 +49,7 @@ export class ProductInputT {
   sku: string;
 
   @Field()
-  @MaxLength(10)
+  @MaxLength(30)
   name: string;
 
   @Field()
@@ -63,16 +63,17 @@ export class ProductInputT {
   @Field({ nullable: true })
   imageKey?: string;
 
-  @Field({ nullable: true })
+  @Field({ nullable: false })
   @MinLength(10, {
     message: "size is too short ! Above 10 words"
   })
   description?: string;
 
-  @Field(_type => Number)
+  @Field(_type => Int)
   quantity: number;
 
-  @Field(_type => Number)
+  @Field(_type => Int)
+  @IsNumber()
   price: number;
 
   @Field()
