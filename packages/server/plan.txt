@@ -169,3 +169,21 @@ model EmailLog {
   content   String
   sentAt    DateTime @default(now())
 }
+
+mutation AddProduct {
+    addProduct(
+        body: {
+            sku: "sku22"
+            name: "testing"
+            slug: "slug22"
+            brand: "68fcc0aacf12d21512e8b2cc"
+            imageUrl: "https://unsplash.com/photos/a-single-red-firework-exploding-in-the-night-sky-yn78c3wXlLc"
+            imageKey: "fireworks"
+            description: "t his is the testing description for fireworks"
+            quantity: 55
+            price: 7785
+            taxable: true
+            isActive: true
+        }
+    )
+}

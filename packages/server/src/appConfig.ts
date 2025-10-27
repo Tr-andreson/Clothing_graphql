@@ -31,8 +31,6 @@ corsConfig(app)
 // database connection
 databaseConnection()
 
-// apollo config 
-// apolloConfig(app)
 ApollooConfig(app)
 
 app.get("/check", (_req, res) => {
