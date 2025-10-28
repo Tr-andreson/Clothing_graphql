@@ -29,9 +29,8 @@
 /* } */
 
 @utility container {
-  padding-inline: 10px;
-  margin-inline: auto;
-  @apply mt-10
+  padding-inline: 100px;
+  @apply mx-auto
 }
 
 .cardHeading {
