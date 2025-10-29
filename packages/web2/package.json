@@ -6,6 +6,7 @@
     "dev": "next dev --turbopack",
     "build": "next build --turbopack",
     "test": "vitest",
+    "test-coverage": "vitest --coverage",
     "start": "next start",
     "lint": "eslint",
     "analyze": "ANALYZE=true next build",
