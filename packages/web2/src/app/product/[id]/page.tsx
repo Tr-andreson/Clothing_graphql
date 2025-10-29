@@ -1,16 +1,20 @@
-// import ProductById from "@/components/components/productList";
-// import { Suspense } from "react";
+import { ProductModule } from "@/application/module/product";
+import Link from "next/link";
 
-const ProductPage = async ({ params }: { params: { id: string } }) => {
-  console.log(params, "params debug");
-  return (
-    <div className="container">
-      <h4>Product Page</h4>
-    </div>
-
-  )
-
+interface ProductPageProps {
+  params: { id: string };
 }
 
+const ProductPage = async ({ params }: ProductPageProps) => {
 
-export default ProductPage
+  return (
+    <div className="container mx-auto px-4 py-8">
+      <Link href="/">
+        <h4>Back</h4>
+      </Link>
+      <ProductModule />
+    </div>
+  );
+};
+
+export default ProductPage;

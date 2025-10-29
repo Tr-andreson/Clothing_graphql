@@ -25,7 +25,6 @@ export interface Product {
 export const HomePage = () => {
   return (
     <>
-
       <section className="bg-[#f4f4f4] min-h-screen w-full overflow-hidden">
         <div className="container mx-auto px-4 flex flex-col lg:flex-row items-center justify-between min-h-[90vh] py-8 lg:py-0">
           {/* Text Content */}
@@ -58,6 +57,7 @@ export const HomePage = () => {
             </motion.div>
 
             <motion.div
+              className="flex items-center gap-4"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.6 }}
@@ -70,12 +70,13 @@ export const HomePage = () => {
                 Shop Now
               </Button>
 
-              <Link
-                href="/login"
+              <Button
+                asChild
+                size="lg"
                 className="mt-6 px-8 py-3 text-lg bg-black text-white hover:bg-gray-800 transition-colors duration-300"
               >
-                Login
-              </Link>
+                <a href="/login">Login</a>
+              </Button>
             </motion.div>
           </motion.div>
 
@@ -100,19 +101,27 @@ export const HomePage = () => {
           </motion.div>
         </div>
       </section>
-      <section className='container mt-10'>
+      <motion.section
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.7, delay: 0.3 }}
+        viewport={{ once: true }}
+        className='container my-10'>
         <h2 className='text-center text-3xl my-10'>Or Subscribe to our News Letter</h2>
         <div className="grid grid-cols-4 gap-4">
           <ProductCard name={"testing"} price={0} img={"/img/1.png"} />
-          <ProductCard name={"testing"} price={0} img={"/img/1.png"} />
-          <ProductCard name={"testing"} price={0} img={"/img/1.png"} />
-          <ProductCard name={"testing"} price={0} img={"/img/1.png"} />
-          <ProductCard name={"testing"} price={0} img={"/img/1.png"} />
-          <ProductCard name={"testing"} price={0} img={"/img/1.png"} />
-          <ProductCard name={"testing"} price={0} img={"/img/1.png"} />
-          <ProductCard name={"testing"} price={0} img={"/img/1.png"} />
+          <ProductCard name={"testing"} price={0} img={"/img/2.webp"} />
+          <ProductCard name={"testing"} price={0} img={"/img/3.webp"} />
+          <ProductCard name={"testing"} price={0} img={"/img/4.webp"} />
+          <ProductCard name={"testing"} price={0} img={"/img/5.webp"} />
+          <ProductCard name={"testing"} price={0} img={"/img/6.webp"} />
+          <ProductCard name={"testing"} price={0} img={"/img/7.webp"} />
+          <ProductCard name={"testing"} price={0} img={"/img/8.webp"} />
         </div>
-      </section>
+      </motion.section>
+      <footer className="bg-black text-white flex items-center justify-center h-[10vh]">
+        <h4 className="text-xl">Copyright @2022. Designed by Tr-andreson</h4>
+      </footer>
 
     </>
 
