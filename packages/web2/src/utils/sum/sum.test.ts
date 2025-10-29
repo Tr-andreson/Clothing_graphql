@@ -8,7 +8,7 @@ describe("SUM", () => {
   })
 
   it("Mock Test", () => {
-    let fakeAdd = vi.fn().mockImplementation(Sum)
+    const fakeAdd = vi.fn().mockImplementation(Sum)
     expect(fakeAdd(2, 3)).toBe(5)
     expect(fakeAdd).toHaveBeenCalledWith(2, 3)
 
