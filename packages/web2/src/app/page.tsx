@@ -2,6 +2,7 @@
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion"
 import Image from "next/image"
+import Link from "next/link";
 
 export default function Home() {
   return (
@@ -48,6 +49,13 @@ export default function Home() {
             >
               Shop Now
             </Button>
+
+            <Link
+              href="/login"
+              className="mt-6 px-8 py-3 text-lg bg-black text-white hover:bg-gray-800 transition-colors duration-300"
+            >
+              Login
+            </Link>
           </motion.div>
         </motion.div>
 
