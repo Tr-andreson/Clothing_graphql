@@ -19,6 +19,7 @@ export class UserResolver {
     return product
   }
 
+
   @Query(() => [UserResonseT])
   async users() {
     const product = await this.userRepository.findAll()
@@ -35,5 +36,7 @@ export class UserResolver {
     const product = await this.userRepository.findByObject(selectedFields)
     return product
   }
+
+
 
 }
