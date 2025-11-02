@@ -3,5 +3,4 @@ export interface ICacheService {
   get(key: string): Promise<any>
   delete(key: string): Promise<any>
   deleteAll(): Promise<any>
-
 }

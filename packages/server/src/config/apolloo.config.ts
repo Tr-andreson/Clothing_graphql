@@ -10,11 +10,12 @@ import cors from "cors"
 import { UserResolver } from "@/presentation/graphql/resolver/user";
 import { UserAddressResolver } from "@/presentation/graphql/resolver/user_address";
 import { UserProfileResovler } from "@/presentation/graphql/resolver/user_profile"
+import PaymentResolver from "@/presentation/graphql/resolver/payment"
 
 export const ApollooConfig = async (app: any) => {
   const apolloServer = new ApolloServer({
     schema: await buildSchema({
-      resolvers: [AuthResolver, ProductR, MerchantResolver, BrandResovler, UserResolver, UserAddressResolver, UserProfileResovler],
+      resolvers: [AuthResolver, ProductR, MerchantResolver, BrandResovler, UserResolver, UserAddressResolver, UserProfileResovler, PaymentResolver],
       validate: true,
     }),
     cache: new InMemoryLRUCache({

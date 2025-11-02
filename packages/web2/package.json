@@ -8,11 +8,14 @@
     "test": "vitest",
     "test-coverage": "vitest --coverage",
     "start": "next start",
+    "e2e": "cypress run",
+    "open": "cypress open",
     "lint": "eslint",
     "analyze": "ANALYZE=true next build",
     "codegen": "graphql-codegen --config codegen.ts",
     "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build"
+    "build-storybook": "storybook build",
+    "prepare": "husky"
   },
   "dependencies": {
     "@apollo/client": "4",
@@ -54,9 +57,11 @@
     "@vitejs/plugin-react": "^5.1.0",
     "@vitest/browser-playwright": "^4.0.3",
     "@vitest/coverage-v8": "^4.0.3",
+    "cypress": "^15.5.0",
     "eslint": "^9",
     "eslint-config-next": "15.5.4",
     "eslint-plugin-storybook": "^9.1.15",
+    "husky": "^9.1.7",
     "jsdom": "^27.0.1",
     "playwright": "^1.56.1",
     "storybook": "^9.1.15",

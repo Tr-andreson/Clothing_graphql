@@ -4,6 +4,10 @@ const nextConfig: NextConfig = {
   eslint: {
     ignoreDuringBuilds: true
   },
+  experimental: {
+    optimizePackageImports: ["framer-motion"]
+
+  },
   images: {
     domains: [
       "unsplash.com",
