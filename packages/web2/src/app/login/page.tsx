@@ -7,7 +7,7 @@ import Link from "next/link"
 const LoginPage = () => {
   return (
     <div>
-      <div className="flex items-center h-screen justify-center flex-col">
+      <div className="flex items-center h-[90vh] justify-center flex-col">
         <Card className="min-w-lg">
           <CardHeader>
             <CardTitle>Login to your account</CardTitle>
