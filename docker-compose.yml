@@ -29,13 +29,6 @@ services:
       mongo:
         condition: service_healthy
 
-  # web:
-  #   build: "./packages/web2"
-  #   ports:
-  #     - "3000:3000"
-  #   depends_on:
-  #     - server
-
   nginx:
     image: nginx:alpine
     ports:

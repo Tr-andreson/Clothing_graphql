@@ -4,19 +4,18 @@ import cookieParser from "cookie-parser";
 import dotenv from "dotenv";
 import express from "express";
 import { graphqlUploadExpress } from "graphql-upload-ts";
-import path from "path";
 import { corsConfig } from "./config/cors.config";
 import { databaseConnection } from "./config/database.config";
 import { ApollooConfig } from "./config/apolloo.config";
 
 
+// ---------------- Load Env Variables -----------------
 dotenv.config()
 
 const app = express()
 
-// graph ql updload
+// ---------------- Graphql File Upload -----------------
 app.use(graphqlUploadExpress({ maxFileSize: 10000000, maxFiles: 10 }));
-app.use("/images", express.static(path.join(__dirname, "../images")));
 
 app.use(express.json())
 app.use(compression())
@@ -24,15 +23,17 @@ app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(cookieParser())
 
-// cors config
+// ---------------- CORS CONFIG -----------------
 corsConfig(app)
 
-// redisConfig(app)
-// database connection
+// ---------------- DATABASE CONNECTION (MONGO DB) -----------------
 databaseConnection()
 
+
+// ---------------- GRAPHQL CONFIGRATION  -----------------
 ApollooConfig(app)
 
+// ---------------- TEST ROUTE  -----------------
 app.get("/check", (_req, res) => {
   res.send("hello world");
 

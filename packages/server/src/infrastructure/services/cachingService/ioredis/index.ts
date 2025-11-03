@@ -6,6 +6,14 @@ export class RedisService implements ICacheService {
 
   constructor() {
     this.cache = new Redis(process.env.REDIS_URL || "redis://localhost:6379");
+    this.cache.on("connect", () => {
+      console.log("✅ Redis connected successfully");
+    });
+
+    this.cache.on("error", (err) => {
+      console.error("❌ Redis connection failed:", err);
+      process.exit(1);
+    });
   }
 
   async set<T>({ key, value }: { key: string; value: T }): Promise<string> {

@@ -22,14 +22,6 @@ export const ApollooConfig = async (app: any) => {
       maxSize: Math.pow(2, 20) * 100,
       ttl: 300,
     }),
-    // plugins: [
-    //   ApolloServerPluginCacheControl({
-    //     defaultMaxAge: 200,
-    //   }),
-    //   ApolloServerPluginUsageReporting({
-    //     fieldLevelInstrumentation: 0.5
-    //   })
-    // ]
   })
   apolloServer.addPlugin(app)
 

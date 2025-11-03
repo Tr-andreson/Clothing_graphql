@@ -3,7 +3,6 @@ dotenv.config()
 import mongoose from "mongoose";
 
 const mongoUrl = process.env.DATABASE_URL ?? "mongodb://mongo:27017/mydatabase";
-// const mongoUrl = "mongodb://localhost:27017/EcommerceGraphql"
 
 export const databaseConnection = async () => {
 
