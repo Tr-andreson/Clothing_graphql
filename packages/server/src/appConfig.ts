@@ -7,6 +7,7 @@ import { graphqlUploadExpress } from "graphql-upload-ts";
 import { corsConfig } from "./config/cors.config";
 import { databaseConnection } from "./config/database.config";
 import { ApollooConfig } from "./config/apolloo.config";
+import client from "prom-client"
 
 
 // ---------------- Load Env Variables -----------------
@@ -27,11 +28,20 @@ app.use(cookieParser())
 corsConfig(app)
 
 // ---------------- DATABASE CONNECTION (MONGO DB) -----------------
-databaseConnection()
+// databaseConnection()
 
 
 // ---------------- GRAPHQL CONFIGRATION  -----------------
-ApollooConfig(app)
+// ApollooConfig(app)
+
+// ------------------ PROM CLIENT SETUP --------------------
+const collectDefaultMetrics = client.collectDefaultMetrics
+collectDefaultMetrics({ register: client.register })
+app.get("/metrics", async (_req, res) => {
+  res.setHeader("Content-Type", client.register.contentType)
+  const metrics = await client.register.metrics()
+  res.send(metrics)
+})
 
 // ---------------- TEST ROUTE  -----------------
 app.get("/check", (_req, res) => {
