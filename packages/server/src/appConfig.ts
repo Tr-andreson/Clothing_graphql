@@ -8,6 +8,7 @@ import { corsConfig } from "./config/cors.config";
 import { databaseConnection } from "./config/database.config";
 import { ApollooConfig } from "./config/apolloo.config";
 import client from "prom-client"
+import { logger } from "./config/winston.config";
 
 
 // ---------------- Load Env Variables -----------------
@@ -45,6 +46,10 @@ app.get("/metrics", async (_req, res) => {
 
 // ---------------- TEST ROUTE  -----------------
 app.get("/check", (_req, res) => {
+  logger.log({
+    level: 'info',
+    message: 'What time is the testing at?'
+  });
   res.send("hello world");
 
 })
