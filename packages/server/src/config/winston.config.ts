@@ -9,7 +9,7 @@ configDotenv()
 const options = {
   transports: [
     new LokiTransport({
-      host: "http://127.0.0.1:3100"
+      host: "http://loki:3100"
     })
   ]
 };

@@ -23,6 +23,11 @@ services:
     ports:
       - "3000:3000"
 
+  loki:
+    image: grafana/loki
+    ports:
+      - "3100:3100"
+
 volumes:
   mongo_data:
   redis_data:
