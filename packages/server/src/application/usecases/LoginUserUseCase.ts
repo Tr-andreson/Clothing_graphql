@@ -1,6 +1,8 @@
 import { IUserRepository } from "@/domain/repositories/IUserRepository";
 import { IHashService } from "@/domain/services/IHashService";
 
+// -------------------- REMOVE THIS USE CASE After using Auth useCase --------------------
+// Use Auth Use case 
 export class LoginUserUseCase {
   constructor(
     private readonly userRepo: IUserRepository,
@@ -14,6 +16,6 @@ export class LoginUserUseCase {
     const isValid = await this.hashService.compare(input.password, user.password);
     if (!isValid) throw new Error("Invalid credentials");
 
-    return "Login success"; // could also generate JWT here
+    return "Login success";
   }
 }
