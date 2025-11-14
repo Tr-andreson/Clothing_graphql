@@ -1,4 +1,4 @@
-import { InputType, Field, Query, ObjectType } from "type-graphql";
+import { InputType, Field, ObjectType } from "type-graphql";
 import { BaseResponseDto } from "../../baseDto";
 
 @InputType()
@@ -64,7 +64,6 @@ export class RegisterResponseT {
 
   @Field()
   created?: Date;
-
 }
 
 

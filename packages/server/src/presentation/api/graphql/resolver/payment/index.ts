@@ -2,9 +2,9 @@ import Stripe from "stripe";
 import { Arg, Mutation, Resolver } from "type-graphql";
 
 
-// Initialize Stripe
 const stripe = new Stripe("YOUR_SECRET_KEY", {
 });
+
 @Resolver()
 class PaymentResolver {
   @Mutation(() => String)

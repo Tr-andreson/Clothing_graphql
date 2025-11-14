@@ -1,10 +1,13 @@
 
 import client from "prom-client"
+import { Express } from "express"
+
+
 
 /*
  * Prom client setup
 */
-export const promClientConfig = (app: any) => {
+export const promClientConfig = (app: Express) => {
   const collectDefaultMetrics = client.collectDefaultMetrics
   collectDefaultMetrics({ register: client.register })
 

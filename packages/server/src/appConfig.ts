@@ -4,17 +4,17 @@ import cookieParser from "cookie-parser";
 import dotenv from "dotenv";
 import express from "express";
 import { graphqlUploadExpress } from "graphql-upload-ts";
+import { apolloConfig } from "./config/apollo.config";
 import { corsConfig } from "./config/cors.config";
 import { databaseConnection } from "./config/database.config";
-import { logger } from "./config/winston.config";
-import { apollooConfig } from "./config/apolloo.config";
 import { promClientConfig } from "./config/prom-client.config";
+import { restConfig } from "./presentation/api/rest";
 
 
 // ---------------- Load Env Variables -----------------
 dotenv.config()
 
-const app = express()
+export const app = express()
 
 // ---------------- Graphql File Upload -----------------
 app.use(graphqlUploadExpress({ maxFileSize: 10000000, maxFiles: 10 }));
@@ -33,20 +33,13 @@ databaseConnection()
 
 
 // ---------------- GRAPHQL CONFIGRATION  -----------------
-apollooConfig(app)
+apolloConfig(app)
 
 // ------------------ PROM CLIENT SETUP --------------------
 promClientConfig(app)
 
-// ---------------- TEST ROUTE  -----------------
-app.get("/check", (_req, res) => {
-  logger.log({
-    level: 'info',
-    message: 'What time is the testing at?'
-  });
-  res.send("hello world");
-
-})
+// -------------- REST API CONFIG -----------------------
+restConfig(app)
 
 export default app
 

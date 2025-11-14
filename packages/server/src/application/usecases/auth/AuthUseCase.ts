@@ -1,12 +1,15 @@
 import { User } from "@/domain/entities/User";
-import { IUserRepository } from "@/domain/repositories/IUserRepository";
-import { IHashService } from "@/domain/services/IHashService";
+import { UserRepository } from "@/infrastructure/db/mongodb/userModel";
+import { BcryptService } from "@/infrastructure/services/hashingService/bcrypt.service";
 
 export class AuthUseCase {
+  private readonly userRepo: UserRepository
+  private readonly hashService: BcryptService
   constructor(
-    private readonly userRepo: IUserRepository,
-    private readonly hashService: IHashService
-  ) { }
+  ) {
+    this.userRepo = new UserRepository()
+    this.hashService = new BcryptService()
+  }
 
 
   public async login(input: { email: string, password: string }) {
@@ -31,6 +34,7 @@ export class AuthUseCase {
   ) {
 
     const hashedPassword = await this.hashService.hash(input.password);
+
     const newUser = new User(
       input.email,
       input.firstName,

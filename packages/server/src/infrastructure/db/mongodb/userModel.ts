@@ -70,13 +70,13 @@ export class UserRepository implements IUserRepository {
     return user
   }
   async findAll(): Promise<any> {
-    return await UserModel.find({})
+    let user = await UserModel.find({})
+    console.log(user, "user modal")
+    return user
   }
   async findByEmail(email: string): Promise<any> {
     return await UserModel.findOne({ email: email })
   }
-
-
 }
 
 

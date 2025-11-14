@@ -13,12 +13,10 @@ export class BrandResovler {
     this.brandService = new BrandUseCase()
   }
 
-
   @Query(() => [BrandResponseT])
   public async Brand(
     @Info() info: GraphQLResolveInfo
   ) {
-
     const fields = graphqlFields(info);
     const selectedFields = Object.keys(fields).join(" ");
     return await this.brandService.findAll(selectedFields)
@@ -27,7 +25,6 @@ export class BrandResovler {
   @Mutation(() => String)
   public async addBrand(
     @Arg("body") body: BrandRequestT
-
   ) {
     await this.brandService.add(body)
     return "Brand Added succesfullyjd"
