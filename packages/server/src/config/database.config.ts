@@ -2,10 +2,10 @@ import dotenv from "dotenv"
 dotenv.config()
 import mongoose from "mongoose";
 
-const mongoUrl = process.env.DATABASE_URL ?? "mongodb://mongo:27017/mydatabase";
+const mongoUrl = process.env.DATABASE_URL ?? "mongodb://localhost:27017/mydatabase";
 
 export const databaseConnection = async () => {
-
+  console.log(mongoUrl, "mongoUrl debug");
   try {
     await mongoose.connect(mongoUrl);
     console.log("✅ MongoDB connection successful");
