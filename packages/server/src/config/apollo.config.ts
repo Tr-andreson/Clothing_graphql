@@ -1,25 +1,19 @@
-import { ApolloServer } from "@apollo/server"
-import { buildSchema } from "type-graphql"
-import { expressMiddleware } from "@as-integrations/express4"
-import { MerchantResolver } from "@/graphql/resolvers/merchant/merchantResolver"
-import { BrandResovler } from "@/graphql/resolvers/brand/brandResolver"
-import { AuthResolver } from "@/graphql/resolvers/auth/authResolver";
+import { ApolloServer } from "@apollo/server";
+import { expressMiddleware } from "@as-integrations/express4";
+import { buildSchema } from "type-graphql";
 import { ProductR } from "@/graphql/resolvers/product/ProudctR";
-import { InMemoryLRUCache } from '@apollo/utils.keyvaluecache';
-import cors from "cors"
+import PaymentResolver from "@/presentation/api/graphql/resolver/payment";
 import { UserResolver } from "@/presentation/api/graphql/resolver/user";
 import { UserAddressResolver } from "@/presentation/api/graphql/resolver/user_address";
-import { UserProfileResovler } from "@/presentation/api/graphql/resolver/user_profile"
-import PaymentResolver from "@/presentation/api/graphql/resolver/payment"
-import { UserResolverGraph } from "@/graphql/resolvers/user/userResolver"
-import { Express } from "express"
+import { UserProfileResovler } from "@/presentation/api/graphql/resolver/user_profile";
+import { InMemoryLRUCache } from '@apollo/utils.keyvaluecache';
+import cors from "cors";
+import { Express } from "express";
 
 export const apolloConfig = async (app: Express | any) => {
   const apolloServer = new ApolloServer({
     schema: await buildSchema({
-      resolvers: [AuthResolver,
-        UserResolverGraph,
-        ProductR, MerchantResolver, BrandResovler, UserResolver, UserAddressResolver, UserProfileResovler, PaymentResolver],
+      resolvers: [ProductR, UserResolver, UserAddressResolver, UserProfileResovler, PaymentResolver],
       validate: true,
     }),
     cache: new InMemoryLRUCache({

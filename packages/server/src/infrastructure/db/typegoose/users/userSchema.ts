@@ -47,6 +47,7 @@ export class UserRepository implements IUserRepository {
     await product.save()
     return "Product added succesfully"
   }
+
   async findAll(): Promise<User[] | any> {
     const products = await UserModel.aggregate([
       {
