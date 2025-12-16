@@ -71,7 +71,6 @@ export class UserRepository implements IUserRepository {
   }
   async findAll(): Promise<any> {
     let user = await UserModel.find({})
-    console.log(user, "user modal")
     return user
   }
   async findByEmail(email: string): Promise<any> {

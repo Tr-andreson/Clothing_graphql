@@ -12,8 +12,9 @@ import { UserAddressResolver } from "@/presentation/api/graphql/resolver/user_ad
 import { UserProfileResovler } from "@/presentation/api/graphql/resolver/user_profile"
 import PaymentResolver from "@/presentation/api/graphql/resolver/payment"
 import { UserResolverGraph } from "@/graphql/resolvers/user/userResolver"
+import { Express } from "express"
 
-export const apolloConfig = async (app: any) => {
+export const apolloConfig = async (app: Express | any) => {
   const apolloServer = new ApolloServer({
     schema: await buildSchema({
       resolvers: [AuthResolver,

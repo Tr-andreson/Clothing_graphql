@@ -1,6 +1,7 @@
 import session from "express-session";
 import RedisStore from "connect-redis"
 import { createClient } from "redis"
+import { Express } from "express"
 
 const redisStoreConfig = () => {
   let redisClient = createClient()
@@ -18,7 +19,7 @@ const redisStoreConfig = () => {
 
 const redisStore = redisStoreConfig()
 
-export const redisConfig = (app: any) => {
+export const redisConfig = (app: Express) => {
   app.use(
     session({
       store: redisStore,
