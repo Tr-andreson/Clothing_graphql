@@ -1,11 +1,13 @@
 services:
   redis:
+    mem_limit: 512m
     image: redis:alpine
     ports:
       - "6379:6379"
     volumes:
       - redis_data:/data/redis
   mongo:
+    mem_limit: 512m
     image: mongo
     ports:
       - "27017:27017"
