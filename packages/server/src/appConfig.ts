@@ -9,10 +9,15 @@ import { corsConfig } from "./config/cors.config";
 import { databaseConnection } from "./config/database.config";
 import { promClientConfig } from "./config/prom-client.config";
 import { restConfig } from "./presentation/api/rest";
+import { logger } from "./config/winston.config";
 
 
 // ---------------- Load Env Variables -----------------
 dotenv.config()
+
+logger.info("🔥 Loki startup test log", {
+  source: "startup",
+});
 
 export const app = express()
 

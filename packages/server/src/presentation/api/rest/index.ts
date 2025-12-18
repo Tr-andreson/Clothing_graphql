@@ -13,4 +13,11 @@ export const restConfig = (app: Express) => {
     res.send("Check Route");
   })
 
+  app.get("/err", (_req: Request, res: Response) => {
+    logger.error({
+      message: 'Err Occured in Err api?'
+    });
+    res.send("Check Error Route");
+  })
+
 }
