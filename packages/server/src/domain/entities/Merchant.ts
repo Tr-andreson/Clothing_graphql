@@ -1,4 +1,4 @@
-import { MERCHANT_STATUS } from "../../utils/constants";
+import { MERCHANT_STATUS } from "@/utils/constants";
 
 export class Merchant {
   constructor(
@@ -10,8 +10,6 @@ export class Merchant {
     public readonly isActive: boolean,
     // public readonly brand: boolean,
     public readonly status: MERCHANT_STATUS.Approved | MERCHANT_STATUS.Rejected | MERCHANT_STATUS.Waiting_Approval,
-    // updated
-    // created
   ) {
 
 

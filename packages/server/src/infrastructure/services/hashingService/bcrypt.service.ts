@@ -1,5 +1,5 @@
+import { IHashService } from "@/domain/services/IHashService";
 import bcrypt from "bcryptjs";
-import { IHashService } from "../../../domain/services/IHashService";
 
 export class BcryptService implements IHashService {
   hash(plain: string): Promise<string> {

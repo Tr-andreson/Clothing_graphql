@@ -1,12 +1,13 @@
 import { configDotenv } from "dotenv";
-import { createLogger } from "winston"
-import LokiTransport from "winston-loki"
+import { createLogger } from "winston";
+import LokiTransport from "winston-loki";
 
 
 // and make this remove this 
 configDotenv()
 
 const options = {
+  level: "info",
   transports: [
     new LokiTransport({
       host: "http://loki:3100"
@@ -15,3 +16,4 @@ const options = {
 };
 
 export const logger = createLogger(options);
+
