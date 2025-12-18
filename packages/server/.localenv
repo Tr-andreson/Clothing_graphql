@@ -1,5 +1,7 @@
 PORT=8000
 DATABASE_URL=mongodb://mongo:27017/mydatabase
 REDIS_URL=redis://redis:6379
+NODEMAILER_USER=xxxx@lovoj.com
+NODEMAILER_PASSWORD=xxxxxxxxxxxxxx
 
 

@@ -1,13 +1,17 @@
 import nodemailer from "nodemailer"
-import { IMailInterface } from "../../../domain/services/IMailService"
+import { IMailInterface } from "@/domain/services/IMailService"
+import dotenv from "dotenv"
+
+// process the config files
+dotenv.config()
 
 export class NodemailerService implements IMailInterface {
   async send() {
     nodemailer.createTransport({
       service: "gmail",
       auth: {
-        user: 'tushar@lovoj.com', // Your email address
-        pass: 'fmlmqaojexteybgo',  // Your email password (use environment variables for security)
+        user: process.env.NODEMAILER_USER,
+        pass: process.env.NODEMAILER_PASSWORD,
       }
     })
   }
