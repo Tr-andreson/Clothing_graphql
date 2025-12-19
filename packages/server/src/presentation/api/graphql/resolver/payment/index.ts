@@ -6,7 +6,7 @@ const stripe = new Stripe("YOUR_SECRET_KEY", {
 });
 
 @Resolver()
-class PaymentResolver {
+export class PaymentResolver {
   @Mutation(() => String)
   async payment(
     @Arg("amount") amount: number,
@@ -28,4 +28,3 @@ class PaymentResolver {
 }
 
 
-export default PaymentResolver
