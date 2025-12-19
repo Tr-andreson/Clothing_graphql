@@ -4,8 +4,10 @@ import cookieParser from "cookie-parser";
 import dotenv from "dotenv";
 import express from "express";
 import { graphqlUploadExpress } from "graphql-upload-ts";
+import { corsConfig, databaseConnection, promClientConfig } from "./config";
+import { logger } from "./infrastructure/services/loggingService/winston.service";
 import { restConfig } from "./presentation/api/rest";
-import { apolloConfig, logger, databaseConnection, promClientConfig, corsConfig } from "./config";
+import { apolloConfig } from "./infrastructure/graphql/apollo-server";
 
 
 // ---------------- Load Env Variables -----------------

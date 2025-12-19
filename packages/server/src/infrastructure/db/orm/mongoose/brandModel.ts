@@ -1,6 +1,6 @@
 import { Schema, model } from "mongoose"
-import { BrandEntity } from "../../../domain/entities/Brand";
-import { IBrandInterface } from "../../../domain/repositories/IBrandRepository";
+import { BrandEntity } from "../../../../domain/entities/Brand";
+import { IBrandInterface } from "../../../../domain/repositories/IBrandRepository";
 
 // Brand Schema
 const BrandSchema = new Schema({

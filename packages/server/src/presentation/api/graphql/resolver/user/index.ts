@@ -2,7 +2,7 @@ import { Mutation, Resolver, Arg, Query, Info } from "type-graphql";
 import { UserInputT, UserResonseT } from "./query";
 import { GraphQLResolveInfo } from "graphql";
 import graphqlFields from "graphql-fields";
-import { UserRepository } from "@/infrastructure/db/typegoose/users/userSchema";
+import { UserRepository } from "@/infrastructure/db/orm/typegoose/users/userSchema";
 
 @Resolver()
 export class UserResolver {

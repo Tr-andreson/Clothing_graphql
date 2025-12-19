@@ -1,5 +1,5 @@
+import { CART_ITEM_STATUS } from "@/utils/constants";
 import { Schema, model } from "mongoose";
-import { CART_ITEM_STATUS } from "../../../utils/constants";
 
 
 const CartItemSchema = new Schema({

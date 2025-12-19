@@ -1,5 +1,5 @@
 import { User } from "@/domain/entities/User";
-import { UserRepository } from "@/infrastructure/db/mongodb/userModel";
+import { UserRepository } from "@/infrastructure/db/orm/mongoose/userModel";
 import { BcryptService } from "@/infrastructure/services/hashingService/bcrypt.service";
 
 export class AuthUseCase {

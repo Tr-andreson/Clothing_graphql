@@ -1,4 +1,4 @@
-import { UserRepository } from "@/infrastructure/db/mongodb/userModel"
+import { UserRepository } from "@/infrastructure/db/orm/mongoose/userModel"
 import { RedisService } from "@/infrastructure/services/cachingService/ioredis"
 
 export class UserUseCase {

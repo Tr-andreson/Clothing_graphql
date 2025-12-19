@@ -1,4 +1,5 @@
-import { BrandResovler, AuthResolver, UserResolver, ProductR, UserAddressResolver, UserProfileResovler, UserResolverGraph, MerchantResolver, PaymentResolver } from "@/presentation/api/graphql/resolver";
+
+import { BrandResovler, AuthResolver, UserResolver, UserAddressResolver, UserProfileResovler, UserResolverGraph, MerchantResolver, PaymentResolver, ProductResolver } from "@/presentation/api/graphql/resolver";
 import { ApolloServer } from "@apollo/server";
 import { InMemoryLRUCache } from '@apollo/utils.keyvaluecache';
 import { expressMiddleware } from "@as-integrations/express4";
@@ -9,7 +10,7 @@ import { buildSchema } from "type-graphql";
 export const apolloConfig = async (app: Express | any) => {
   const apolloServer = new ApolloServer({
     schema: await buildSchema({
-      resolvers: [ProductR, UserResolver, UserAddressResolver, UserProfileResovler, PaymentResolver, AuthResolver, BrandResovler, MerchantResolver, ProductR, UserResolverGraph],
+      resolvers: [ProductResolver, UserResolver, UserAddressResolver, UserProfileResovler, PaymentResolver, AuthResolver, BrandResovler, MerchantResolver, UserResolverGraph],
       validate: true,
     }),
     cache: new InMemoryLRUCache({

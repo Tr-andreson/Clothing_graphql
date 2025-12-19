@@ -1,11 +1,11 @@
 import { Resolver, Query, Mutation, Arg } from "type-graphql";
 import { ProductInputT, ProductT } from "./dto";
 import { ProductUseCase } from "@/application/usecases/product/ProductUseCase";
-import { ProductRepository } from "@/infrastructure/db/mongodb/productModel";
+import { ProductRepository } from "@/infrastructure/db/orm/mongoose/productModel";
 import { GraphQLError } from "graphql";
 
 @Resolver()
-export class ProductR {
+export class ProductResolver {
   private readonly productUseCase: ProductUseCase;
 
   constructor() {

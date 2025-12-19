@@ -1,5 +1,5 @@
 import { Product } from "@/domain/entities/Product";
-import { ProductRepository } from "@/infrastructure/db/mongodb/productModel";
+import { ProductRepository } from "@/infrastructure/db/orm/mongoose/productModel";
 import { RedisService } from "@/infrastructure/services/cachingService/ioredis";
 
 export class ProductUseCase {

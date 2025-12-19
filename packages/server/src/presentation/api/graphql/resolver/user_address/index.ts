@@ -1,6 +1,6 @@
 import { Arg, Mutation, Resolver } from "type-graphql";
 import { UserAddressRequest } from "./query";
-import { UserAddressRepository } from "@/infrastructure/db/typegoose/users/userAddressSchema";
+import { UserAddressRepository } from "@/infrastructure/db/orm/typegoose/users/userAddressSchema";
 
 
 @Resolver()

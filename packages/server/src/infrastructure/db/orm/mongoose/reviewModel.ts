@@ -1,5 +1,5 @@
 import { Schema, model } from "mongoose"
-import { REVIEW_STATUS } from "../../../utils/constants";
+import { REVIEW_STATUS } from "../../../../utils/constants";
 
 const ReviewSchema = new Schema({
   product: {

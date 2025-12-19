@@ -1,7 +1,7 @@
+import { logger } from "@/infrastructure/services/loggingService/winston.service";
 import dotenv from "dotenv"
 dotenv.config()
 import mongoose from "mongoose";
-import { logger } from "./winston.config";
 
 const mongoUrl = process.env.DATABASE_URL ?? "mongodb://localhost:27017/mydatabase";
 

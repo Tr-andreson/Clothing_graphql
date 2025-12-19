@@ -1,7 +1,7 @@
 import { Schema, model } from "mongoose";
-import { IMerchantRepository } from "../../../domain/repositories/IMerchantRepository";
-import { Merchant } from "../../../domain/entities/Merchant";
-import { MERCHANT_STATUS } from "../../../utils/constants";
+import { IMerchantRepository } from "../../../../domain/repositories/IMerchantRepository";
+import { Merchant } from "../../../../domain/entities/Merchant";
+import { MERCHANT_STATUS } from "@/utils/constants";
 
 
 

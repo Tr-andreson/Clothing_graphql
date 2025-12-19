@@ -1,7 +1,7 @@
 import { Arg, Mutation, Query, Resolver } from "type-graphql";
 import { MerchantRequestT, MerchantResposeT } from "./dto";
 import { MerchantUserCase } from "@/application/usecases/merchant/MerchantUseCase";
-import { MerchantRepository } from "@/infrastructure/db/mongodb/merchantModel";
+import { MerchantRepository } from "@/infrastructure/db/orm/mongoose/merchantModel";
 
 @Resolver()
 export class MerchantResolver {
