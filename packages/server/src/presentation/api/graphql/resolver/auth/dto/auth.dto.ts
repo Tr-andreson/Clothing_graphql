@@ -1,5 +1,5 @@
+
 import { InputType, Field, ObjectType } from "type-graphql";
-import { BaseResponseDto } from "../../baseDto";
 
 @InputType()
 export class RegisterInputT {
@@ -100,7 +100,7 @@ export class LoginInputT {
 
 
 @ObjectType()
-export class LoginResponseT extends BaseResponseDto {
+export class LoginResponseT {
 
   @Field()
   _id: string
