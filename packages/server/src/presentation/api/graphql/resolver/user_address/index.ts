@@ -11,7 +11,7 @@ export class UserAddressResolver {
   }
 
   @Mutation(() => String)
-  async user_address(
+  async User_Address(
     @Arg("body") body: UserAddressRequest
   ) {
     await this.UserAddress.save(body)

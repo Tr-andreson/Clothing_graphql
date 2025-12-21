@@ -8,7 +8,7 @@ const stripe = new Stripe("YOUR_SECRET_KEY", {
 @Resolver()
 export class PaymentResolver {
   @Mutation(() => String)
-  async payment(
+  async Payment(
     @Arg("amount") amount: number,
     @Arg("currency", () => String, { defaultValue: "usd" }) currency: string
   ) {

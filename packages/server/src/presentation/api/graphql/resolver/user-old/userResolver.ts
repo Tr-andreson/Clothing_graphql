@@ -11,7 +11,7 @@ export class UserResolverGraph {
   }
 
   @Query(() => UserResponseT)
-  async getUsers() {
+  async Users() {
     const users = await this.userService.getUsers()
     console.log(users, "graph presentation")
     return users

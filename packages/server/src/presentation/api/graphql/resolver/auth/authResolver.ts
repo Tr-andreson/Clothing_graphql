@@ -13,14 +13,14 @@ export class AuthResolver {
   }
 
   @Mutation(() => String)
-  async registerUser(@Arg("body") body: RegisterInputT) {
+  async RegisterUser(@Arg("body") body: RegisterInputT) {
     console.log(body)
     await this.authService.register(body);
     return "User registered successfully";
   }
 
   @Mutation(() => String)
-  async loginUser(@Arg("body") body: LoginInputT) {
+  async LoginUser(@Arg("body") body: LoginInputT) {
     return await this.authService.login(body);
   }
 }

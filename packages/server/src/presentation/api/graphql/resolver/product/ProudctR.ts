@@ -38,7 +38,7 @@ export class ProductResolver {
   }
 
   @Mutation(() => String)
-  public async addProduct(
+  public async Add_Product(
     @Arg("body") body: ProductInputT
   ) {
     // await ProductModel.create(body)

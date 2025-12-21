@@ -17,7 +17,7 @@ export class MerchantResolver {
   }
 
   @Mutation(() => String)
-  public async addMerchant(
+  public async Add_Merhant(
     @Arg("body") body: MerchantRequestT
   ) {
     await this.merchanteUseCase.add(body)

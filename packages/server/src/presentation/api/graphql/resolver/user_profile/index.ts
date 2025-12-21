@@ -10,7 +10,7 @@ export class UserProfileResovler {
   }
 
   @Mutation(() => String)
-  async user_profile(
+  async User_Profiles(
     @Arg("body") body: UserProfileRequest
   ) {
     await this.userRepository.save(body)
@@ -19,7 +19,7 @@ export class UserProfileResovler {
   }
 
   @Query(() => [UserProfileResponse])
-  async user_profiles() {
+  async UserProfiles() {
     const profile = await this.userRepository.findAll()
     return profile
   }

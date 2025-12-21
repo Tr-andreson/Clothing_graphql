@@ -12,7 +12,7 @@ export class UserResolver {
   }
 
   @Mutation(() => String)
-  async user(
+  async User(
     @Arg("body") body: UserInputT
   ) {
     const product = await this.userRepository.save(body)
@@ -21,14 +21,14 @@ export class UserResolver {
 
 
   @Query(() => [UserResonseT])
-  async users() {
+  async Users() {
     const product = await this.userRepository.findAll()
     console.dir(product, { depth: null });
     return product
   }
 
   @Query(() => [UserResonseT])
-  async userR(
+  async UsersR(
     @Info() info: GraphQLResolveInfo
   ) {
     const fields = graphqlFields(info);

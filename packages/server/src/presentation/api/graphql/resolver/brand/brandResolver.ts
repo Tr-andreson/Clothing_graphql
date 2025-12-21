@@ -23,7 +23,7 @@ export class BrandResovler {
   }
 
   @Mutation(() => String)
-  public async addBrand(
+  public async Add_Brand(
     @Arg("body") body: BrandRequestT
   ) {
     await this.brandService.add(body)
