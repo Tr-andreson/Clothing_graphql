@@ -12,7 +12,11 @@ export class CookieService {
   }
 
   clearAuthCookie(res: Response) {
-    res.clearCookie("auth");
+    res.clearCookie("auth", {
+      httpOnly: true,
+      sameSite: "lax",
+      secure: false
+    });
   }
 
 }

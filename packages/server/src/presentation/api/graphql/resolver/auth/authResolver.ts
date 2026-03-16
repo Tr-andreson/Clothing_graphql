@@ -32,4 +32,12 @@ export class AuthResolver {
   }
 
 
+  @Mutation(() => String)
+  async LogoutUser(@Ctx() { res }: GraphQLContext) {
+    this.cookieService.clearAuthCookie(res)
+    return "User Logout Succesfully"
+
+  }
+
+
 }
