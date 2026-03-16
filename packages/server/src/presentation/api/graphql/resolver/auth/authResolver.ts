@@ -1,7 +1,7 @@
 
 // presentation/graphql/resolvers/AuthResolver.ts
 import { AuthUseCase } from "@/application/usecases/auth/AuthUseCase";
-import { Arg, Ctx, Mutation, Resolver, } from "type-graphql";
+import { Arg, Ctx, Mutation, Query, Resolver, } from "type-graphql";
 import { LoginInputT, RegisterInputT } from "./dto/auth.dto";
 import { GraphQLContext } from "@/utils/constants";
 import { CookieService } from "@/infrastructure/services/cookieService";
@@ -31,12 +31,16 @@ export class AuthResolver {
     return "User Login Successfully"
   }
 
-
   @Mutation(() => String)
   async LogoutUser(@Ctx() { res }: GraphQLContext) {
     this.cookieService.clearAuthCookie(res)
     return "User Logout Succesfully"
+  }
 
+  // -- SESSION NOT IMPLEMENTED YET -------
+  @Query(() => String)
+  me(@Ctx() { req }: GraphQLContext) {
+    return req.session.userId || "Not logged in";
   }
 
 

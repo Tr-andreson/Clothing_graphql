@@ -18,6 +18,7 @@ export const apolloConfig = async (app: Express | any) => {
     }),
   })
   apolloServer.addPlugin(app)
+  apolloServer
 
   await apolloServer.start()
   app.use('/graphql',

@@ -8,6 +8,7 @@ import { corsConfig, databaseConnection, promClientConfig } from "./config";
 import { logger } from "./infrastructure/services/loggingService/winston.service";
 import { restConfig } from "./presentation/api/rest";
 import { apolloConfig } from "./infrastructure/graphql/apollo-server";
+import { SessionConfig } from "./config/session.config";
 
 
 // ---------------- Load Env Variables -----------------
@@ -37,6 +38,9 @@ app.use(cookieParser())
 
 // ---------------- CORS CONFIG -----------------
 corsConfig(app)
+
+// ------------------- SESSION CONFIG ---------------
+SessionConfig(app)
 
 // ---------------- DATABASE CONNECTION (MONGO DB) -----------------
 databaseConnection()
