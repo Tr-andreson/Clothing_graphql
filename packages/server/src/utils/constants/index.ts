@@ -1,5 +1,7 @@
 import { registerEnumType } from "type-graphql";
 
+import { Request, Response } from "express";
+
 const DatabaseUrl = process.env.DATABASE_URL
 const Port = process.env.PORT
 
@@ -50,3 +52,9 @@ export const EMAIL_PROVIDER = {
 };
 
 export const JWT_COOKIE = 'x-jwt-cookie';
+
+
+export interface GraphQLContext {
+  req: Request;
+  res: Response;
+}

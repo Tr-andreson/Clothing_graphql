@@ -8,6 +8,7 @@ services:
       - redis_data:/data/redis
   mongo:
     mem_limit: 512m
+    restart: always
     image: mongo
     ports:
       - "27017:27017"

@@ -1,4 +1,3 @@
-
 import { BrandResovler, AuthResolver, UserResolver, UserAddressResolver, UserProfileResovler, UserResolverGraph, MerchantResolver, PaymentResolver, ProductResolver } from "@/presentation/api/graphql/resolver";
 import { ApolloServer } from "@apollo/server";
 import { InMemoryLRUCache } from '@apollo/utils.keyvaluecache';
@@ -24,7 +23,7 @@ export const apolloConfig = async (app: Express | any) => {
   app.use('/graphql',
     cors<cors.CorsRequest>({ origin: ["http://localhost:3000"] }),
     expressMiddleware(apolloServer, {
-      context: async ({ req }) => ({ token: req.headers.token }),
+      context: async ({ req, res }) => ({ token: req.headers.token, res }),
     }),
   );
 

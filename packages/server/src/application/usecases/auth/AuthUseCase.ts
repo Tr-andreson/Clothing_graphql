@@ -18,7 +18,7 @@ export class AuthUseCase {
     const isValid = await this.hashService.compare(input.password, user.password);
     if (!isValid) throw new Error("Invalid credentials");
 
-    return "Login success";
+    return user;
 
   }
 

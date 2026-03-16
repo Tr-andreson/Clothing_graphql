@@ -1,12 +1,17 @@
 
 // presentation/graphql/resolvers/AuthResolver.ts
 import { AuthUseCase } from "@/application/usecases/auth/AuthUseCase";
-import { Arg, Mutation, Resolver } from "type-graphql";
+import { Arg, Ctx, Mutation, Resolver, } from "type-graphql";
 import { LoginInputT, RegisterInputT } from "./dto/auth.dto";
+import { GraphQLContext } from "@/utils/constants";
+import { CookieService } from "@/infrastructure/services/cookieService";
+import { JwtService } from "@/infrastructure/services/tokenService/jwtService";
 
 @Resolver()
 export class AuthResolver {
   private readonly authService: AuthUseCase
+  private cookieService = new CookieService(); // new way to write class constructor
+  private jwtService = new JwtService()
 
   constructor() {
     this.authService = new AuthUseCase()
@@ -19,7 +24,12 @@ export class AuthResolver {
   }
 
   @Mutation(() => String)
-  async LoginUser(@Arg("body") body: LoginInputT) {
-    return await this.authService.login(body);
+  async LoginUser(@Arg("body") body: LoginInputT, @Ctx() { res }: GraphQLContext) {
+    const user = await this.authService.login(body);
+    const token = await this.jwtService.hash(JSON.stringify(user))
+    this.cookieService.setAuthCookie(res, token)
+    return "User Login Successfully"
   }
+
+
 }
