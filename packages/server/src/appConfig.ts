@@ -9,6 +9,7 @@ import { logger } from "./infrastructure/services/loggingService/winston.service
 import { restConfig } from "./presentation/api/rest";
 import { apolloConfig } from "./infrastructure/graphql/apollo-server";
 import { SessionConfig } from "./config/session.config";
+import { RateLimiterConfig } from "./config/rateLimiter.config";
 
 
 // ---------------- Load Env Variables -----------------
@@ -41,6 +42,9 @@ corsConfig(app)
 
 // ------------------- SESSION CONFIG ---------------
 SessionConfig(app)
+
+// ------------------- SESSION CONFIG ---------------
+RateLimiterConfig(app)
 
 // ---------------- DATABASE CONNECTION (MONGO DB) -----------------
 databaseConnection()
