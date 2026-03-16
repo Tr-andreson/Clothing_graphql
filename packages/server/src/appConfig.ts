@@ -11,7 +11,14 @@ import { apolloConfig } from "./infrastructure/graphql/apollo-server";
 
 
 // ---------------- Load Env Variables -----------------
-dotenv.config()
+const result = dotenv.config({
+  path: ".env.local"
+})
+if (result.error) {
+  throw result.error
+}
+
+console.log(result.parsed)
 
 logger.info("🔥 Loki startup test log", {
   source: "startup",

@@ -1,8 +1,10 @@
 import { WebSocketServer } from "ws"
 import { Server } from "http";
+import { logger } from "@/infrastructure/services/loggingService/winston.service";
 
 export const WebSocketConnection = (server: Server) => {
-  console.log("web socket conenction working")
+
+  logger.info("WEB SOCKET CONNECTION Success")
   const wss = new WebSocketServer({ server });
 
   wss.on('connection', (ws, req) => {

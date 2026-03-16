@@ -7,7 +7,7 @@ export class WinstonService {
   constructor() {
     this.logger = createLogger({
       level: "info",
-      defaultMeta: { service: "user-service" },
+      // defaultMeta: { service: "user-service" },
       format: format.combine(
         format.timestamp({ format: "YYYY-MM-DD HH:mm:ss" }),
         format.json()

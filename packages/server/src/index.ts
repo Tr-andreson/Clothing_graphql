@@ -3,6 +3,7 @@ import dotenv from "dotenv"
 import http from "node:http"
 import app from "./appConfig"
 import { WebSocketConnection } from "./presentation/api/websocket"
+import { logger } from "./infrastructure/services/loggingService/winston.service"
 
 dotenv.config()
 
@@ -12,8 +13,8 @@ const main = () => {
   // --------------- WEB SOCKET CONNECTION --------
   WebSocketConnection(server)
 
-  server.listen(process.env.PORT || 8000, () => {
-    console.log(`server listing to port ${process.env.PORT || 8000}`)
+  server.listen(process.env.PORT, () => {
+    logger.info(`Server Running to PORT ${process.env.PORT || 9000}`)
   })
 }
 

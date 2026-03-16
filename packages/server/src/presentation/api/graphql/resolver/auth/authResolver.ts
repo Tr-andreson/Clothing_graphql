@@ -14,7 +14,6 @@ export class AuthResolver {
 
   @Mutation(() => String)
   async RegisterUser(@Arg("body") body: RegisterInputT) {
-    console.log(body)
     await this.authService.register(body);
     return "User registered successfully";
   }
