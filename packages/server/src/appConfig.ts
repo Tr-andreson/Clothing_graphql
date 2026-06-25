@@ -5,7 +5,7 @@ import dotenv from "dotenv";
 import express from "express";
 import { graphqlUploadExpress } from "graphql-upload-ts";
 import { corsConfig, databaseConnection, promClientConfig } from "./config";
-import { logger } from "./infrastructure/services/loggingService/winston.service";
+// import { logger } from "./infrastructure/services/loggingService/winston.service";
 import { restConfig } from "./presentation/api/rest";
 import { apolloConfig } from "./infrastructure/graphql/apollo-server";
 import { SessionConfig } from "./config/session.config";
@@ -13,18 +13,16 @@ import { RateLimiterConfig } from "./config/rateLimiter.config";
 
 
 // ---------------- Load Env Variables -----------------
-const result = dotenv.config({
-  path: ".env.local"
-})
-if (result.error) {
-  throw result.error
-}
+// const result = dotenv.config({
+//   // path: ".env.local"
+//   path: "./.env.production"
+// })
+// if (result.error) {
+//   throw result.error
+// }
+//
+// console.log(result.parsed)
 
-console.log(result.parsed)
-
-logger.info("🔥 Loki startup test log", {
-  source: "startup",
-});
 
 export const app = express()
 
@@ -48,7 +46,6 @@ RateLimiterConfig(app)
 
 // ---------------- DATABASE CONNECTION (MONGO DB) -----------------
 databaseConnection()
-
 
 // ---------------- GRAPHQL CONFIGRATION  -----------------
 apolloConfig(app)

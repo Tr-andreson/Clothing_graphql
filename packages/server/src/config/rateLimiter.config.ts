@@ -10,7 +10,7 @@ import RateLimit from "express-rate-limit"
 export const RateLimiterConfig = (app: Express) => {
   const limiter = RateLimit({
     windowMs: 15 * 60 * 1000, // 15 minutes
-    max: 5,
+    max: 3000,
   });
   app.use(limiter
   );

@@ -4,7 +4,7 @@ import { logger } from "@/infrastructure/services/loggingService/winston.service
 
 export const WebSocketConnection = (server: Server) => {
 
-  logger.info("WEB SOCKET CONNECTION Success")
+  // logger.info("WEB SOCKET CONNECTION Success")
   const wss = new WebSocketServer({ server });
 
   wss.on('connection', (ws, req) => {

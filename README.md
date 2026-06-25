@@ -1,4 +1,3 @@
-G# EcomGraphql
 # Clothing Graphql
 
 
@@ -8,8 +7,30 @@ docker-compose up -d inside server // to run local values
 
 bun run dev
 
-
 open url http://localhost:8000/graphql inside any api client like postman
+
+
+
+
+
+# For Production
+
+
+## create .env.production file inside server
+```
+docker-compose build
+docker-compose up -d
+
+// to check if the server is running
+docker-compose ps 
+
+curl http://localhost:8000
+
+// Result
+working
+
+
+```
 
 
 
