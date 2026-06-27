@@ -5,6 +5,7 @@ export class RedisService implements ICacheService {
   private readonly cache: Redis;
 
   constructor() {
+		console.log(process.env.REDIS_URL)
     this.cache = new Redis(process.env.REDIS_URL || "redis://localhost:6379");
     this.cache.on("connect", () => {
       console.log("✅ Redis connected successfully");

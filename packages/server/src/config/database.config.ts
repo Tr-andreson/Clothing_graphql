@@ -8,6 +8,7 @@ const mongoUrl = process.env.DATABASE_URL ?? "mongodb://localhost:27017/mydataba
 export const databaseConnection = async () => {
   try {
     await mongoose.connect(mongoUrl);
+		console.log(mongoUrl)
 		console.log("MONGODB -- Database Connected Succesfully");
     // logger.info("MONGO DB CONNECTION Success")
   } catch (error) {

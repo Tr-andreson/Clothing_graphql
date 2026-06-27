@@ -17,8 +17,6 @@ export class UserUseCase {
     if (cachedUser) return cachedUser
 
     let users = await this.userRepo.findAll()
-    console.log(users, "users debug");
-    console.log("get users workd")
     await this.cacheService.set({
       key: "user",
       value: users

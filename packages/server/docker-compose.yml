@@ -15,6 +15,7 @@ services:
     volumes:
       - mongo_data:/data/db
   prometheus:
+    mem_limit: 900m
     image: prom/prometheus
     ports:
       - "9090:9090"
@@ -22,11 +23,13 @@ services:
       - ./prometheus.yml:/etc/prometheus/prometheus.yml
 
   grafana:
+    mem_limit: 900m
     image: grafana/grafana
     ports:
       - "3000:3000"
 
   loki:
+    mem_limit: 900m
     image: grafana/loki
     ports:
       - "3100:3100"

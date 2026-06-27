@@ -1,5 +1,5 @@
 import { Mutation, Resolver, Arg, Query, Info } from "type-graphql";
-import { UserInputT, UserResonseT } from "./query";
+import { UserInputT, UserResonseT, UserResponseTT } from "./query";
 import { GraphQLResolveInfo } from "graphql";
 import graphqlFields from "graphql-fields";
 import { UserRepository } from "@/infrastructure/db/orm/typegoose/users/userSchema";
@@ -20,10 +20,16 @@ export class UserResolver {
   }
 
 
-  @Query(() => [UserResonseT])
+  @Query(() => [UserResponseTT])
   async Users() {
     const product = await this.userRepository.findAll()
-    console.dir(product, { depth: null });
+    return product
+  }
+
+  @Query(() => [UserResponseTT])
+  async Use() {
+    const product = await this.userRepository.findAll()
+		console.log(product , "Products")
     return product
   }
 

@@ -13,15 +13,15 @@ import { RateLimiterConfig } from "./config/rateLimiter.config";
 
 
 // ---------------- Load Env Variables -----------------
-// const result = dotenv.config({
-//   // path: ".env.local"
-//   path: "./.env.production"
-// })
-// if (result.error) {
-//   throw result.error
-// }
-//
-// console.log(result.parsed)
+const result = dotenv.config({
+  // path: ".env.local"
+  path: "./.env.production"
+})
+if (result.error) {
+  throw result.error
+}
+
+console.log(result.parsed)
 
 
 export const app = express()

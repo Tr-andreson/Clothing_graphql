@@ -50,3 +50,13 @@ export class UserResonseT {
   @Field(() => [UserProfileResponse])
   profile: [UserProfileResponse]
 }
+
+@ObjectType()
+export class UserResponseTT {
+  @Field()
+  _id: string
+
+  @Field()
+  email: string
+
+}
