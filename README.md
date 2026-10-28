@@ -3,7 +3,7 @@
 
 To Run Server Locally
 
-docker-compose up -d inside server // to run local values
+docker-compose up -d inside server folder
 
 bun run dev
 
