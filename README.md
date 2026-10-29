@@ -1,13 +1,27 @@
 # Clothing Graphql
 
 
-To Run Server Locally
+# For Development (SERVER)
 
-docker-compose up -d inside server folder
+run:
+(inside server folder)
 
+```
+docker-compose up -d
+```
+
+
+run:
+(inside server folder)
+
+```
 bun run dev
+```
 
-open url http://localhost:8000/graphql inside any api client like postman
+
+open url 
+http://localhost:8000/graphql
+inside any api client Example (POSTMAN)
 
 
 
