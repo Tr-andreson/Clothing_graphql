@@ -4,17 +4,20 @@
 # For Development (SERVER)
 
 run:
+(inside server folder)
+
 ```
 docker-compose up -d
 ```
-(inside server folder)
+
 
 run:
+(inside server folder)
 
 ```
 bun run dev
 ```
-(inside server folder)
+
 
 open url 
 http://localhost:8000/graphql
