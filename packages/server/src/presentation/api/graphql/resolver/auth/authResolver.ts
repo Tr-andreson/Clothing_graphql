@@ -40,7 +40,7 @@ export class AuthResolver {
   // -- SESSION NOT IMPLEMENTED YET -------
   @Query(() => String)
   me(@Ctx() { req }: GraphQLContext) {
-    return req.session.userId || "Not logged in";
+    return req?.session?.userId || "User Not logged in";
   }
 
 
