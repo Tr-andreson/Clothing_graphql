@@ -7,3 +7,5 @@ coverage
 .env.production
 
 /generated/prisma
+
+tags
