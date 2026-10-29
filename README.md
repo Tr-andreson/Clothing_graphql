@@ -4,11 +4,16 @@
 # For Development (SERVER)
 
 run:
-docker-compose up -d 
+```
+docker-compose up -d
+```
 (inside server folder)
 
 run:
+
+```
 bun run dev
+```
 (inside server folder)
 
 open url 
