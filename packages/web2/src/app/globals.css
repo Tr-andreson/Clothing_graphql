@@ -29,7 +29,7 @@
 /* } */
 
 @utility container {
-  padding-inline: 100px;
+  padding-inline: 14px;
   @apply mx-auto
 }
 

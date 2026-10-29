@@ -1,67 +1,29 @@
-
 "use client"
+import { ProductModule } from "@/components/module/product"
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
-import { ProductCard } from "../card";
-import Image from "next/image"
 
-export interface ProductT {
-  data: Data;
-}
-
-export interface Data {
-  Products: Product[];
-}
-
-export interface Product {
-  id: string;
-  name: string;
-  imageUrl: string;
-  imageKey: string;
-  description: string;
-  quantity: number;
-  price: number;
-}
 export const HomePage = () => {
   return (
     <>
-      <section className="bg-[#f4f4f4] min-h-screen w-full overflow-hidden">
-        <div className="container mx-auto px-4 flex flex-col lg:flex-row items-center justify-between min-h-[90vh] py-8 lg:py-0">
+      <section className="bg-[#f4f4f4] container block lg:flex items-center justify-center lg:min-h-screen w-full overflow-hidden space-y-4 p-4 lg:space-x-6">
           {/* Text Content */}
-          <motion.div
-            className="space-y-6 lg:space-y-8 lg:w-1/2 text-center lg:text-left order-2 lg:order-1"
-            initial={{ opacity: 0, x: -50 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.7 }}
-            viewport={{ once: true }}
-          >
-            <motion.h1
-              className="text-4xl lg:text-6xl xl:text-7xl font-bold leading-tight"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.2 }}
-              viewport={{ once: true }}
+          <div>
+            <h1
+						className="text-gray-600 lg:text-3xl"
             >
               Collections
-            </motion.h1>
+            </h1>
 
-            <motion.div
+            <div
               className="mt-6 lg:mt-8 text-xl lg:text-2xl text-gray-600 space-y-2"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.4 }}
-              viewport={{ once: true }}
             >
               <p>You can explore and shop many different collections</p>
               <p>From various brands here</p>
-            </motion.div>
+            </div>
 
-            <motion.div
-              className="flex items-center gap-4"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.6 }}
-              viewport={{ once: true }}
+            <div
+              className="flex items-center  justify-center lg:justify-start gap-4"
             >
               <Button
                 size="lg"
@@ -77,52 +39,26 @@ export const HomePage = () => {
               >
                 <a href="/login">Login</a>
               </Button>
-            </motion.div>
-          </motion.div>
+            </div>
+          </div>
 
           {/* Image Content */}
-          <motion.div
-            className="lg:w-1/2 order-1 lg:order-2 mb-8 lg:mb-0"
-            initial={{ opacity: 0, x: 50 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.7, delay: 0.3 }}
-            viewport={{ once: true }}
-          >
-            <div className="relative w-full h-[300px] lg:h-[500px] xl:h-[600px]">
-              <Image
-                src="/hero1.png"
-                alt="Fashion Collections"
-                fill
-                className="object-contain"
-                priority
-                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 40vw"
-              />
-            </div>
-          </motion.div>
-        </div>
+					<div className="flex items-center justify-center">
+						<img 
+						className="size=[50%]"
+							src="hero1.png"
+						/>
+					</div>
       </section>
       <motion.section
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.7, delay: 0.3 }}
         viewport={{ once: true }}
-        className='container my-10'>
-        <h2 className='text-center text-3xl my-10'>Or Subscribe to our News Letter</h2>
-        <div className="grid grid-cols-4 gap-4">
-          <ProductCard name={"testing"} price={0} img={"/img/1.png"} />
-          <ProductCard name={"testing"} price={0} img={"/img/2.webp"} />
-          <ProductCard name={"testing"} price={0} img={"/img/3.webp"} />
-          <ProductCard name={"testing"} price={0} img={"/img/4.webp"} />
-          <ProductCard name={"testing"} price={0} img={"/img/5.webp"} />
-          <ProductCard name={"testing"} price={0} img={"/img/6.webp"} />
-          <ProductCard name={"testing"} price={0} img={"/img/7.webp"} />
-          <ProductCard name={"testing"} price={0} img={"/img/8.webp"} />
-        </div>
+        className='container space-y-4 my-6'>
+        <h2 className='text-center text-lg lg:text-3xl'>Recent Products</h2>
+ 					<ProductModule />
       </motion.section>
-      <footer className="bg-black text-white flex items-center justify-center h-[10vh]">
-        <h4 className="text-xl">Copyright @2022. Designed by Tr-andreson</h4>
-      </footer>
-
     </>
 
   )

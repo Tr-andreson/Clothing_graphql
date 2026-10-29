@@ -1,9 +1,9 @@
 import { Button } from "@/components/ui/button"
 import { Star } from "lucide-react"
 
-export const ProductModule = () => {
+export const ProductsModuleO = () => {
   return (
-    <div className='grid lg:grid-cols-3 gap-4 lg:mx-24 h-screen'>
+    <div className='grid lg:grid-cols-3 gap-4 lg:mx-24 h-screen overflow-hidden'>
       <div className="space-y-2 col-span-1">
         <img
           src={"/product/1.jpg"}

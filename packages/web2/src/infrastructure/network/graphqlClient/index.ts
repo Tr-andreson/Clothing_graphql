@@ -19,7 +19,6 @@ export async function fetchGraphQL<T>(
   const { data, errors } = await res.json();
 
   if (errors) {
-    console.error(errors);
     throw new Error(errors[0].message);
   }
 

@@ -6,9 +6,8 @@ import Link from "next/link";
 export const Navbar = () => {
   // const cartItems = useCart((state: any) => state.bears)
   const cartItems = useCart((i: any) => i.bears)
-  console.log(cartItems, "cartItems debug");
   return (
-    <div className="h-[5vh] flex items-center justify-between mx-20">
+    <div className="h-[10vh] flex items-center justify-between container bg-gray-300">
       <Link href="/">
         <h4>Clothing</h4>
       </Link>

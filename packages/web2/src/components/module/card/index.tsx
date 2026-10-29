@@ -24,12 +24,12 @@ export const ProductCard = ({ name, price, img }: ProductCardProps) => {
           fill
           alt={name}
           src={img}
-          className="rounded-lg object-contain"
+          className="rounded-lg object-contain shrink-0"
         />
       </div>
 
-      <div className="flex items-center justify-between">
-        <h3 className="text-lg font-semibold capitalize">{name}</h3>
+      <div className="flex items-center justify-between text-xs lg:text-sm">
+        <h3 className="lg:text-lg font-semibold capitalize">{name}</h3>
         <p className="text-gray-700">${price}</p>
       </div>
     </div>
